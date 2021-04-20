@@ -1,3 +1,3 @@
-- JavaScript
-  - [vue3](page/v3-入门.md)
-  - [原型](page/prototype.md)
+- vue
+  - [vue3](page/vue3/index.md)
+  - [vue2](page/prototype.md)
