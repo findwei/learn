@@ -1,2 +1,2 @@
 - vue3
-  - [vue3-c](./vue-g.md)
+  - [vue3](./index.md)
