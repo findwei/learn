@@ -1,2 +1,4 @@
 - vue3
-  - [vue3](./index.md)
+  - [vue3](page/vue3/index.md)
+  
+  - [veit](page/vue3/veit.md)

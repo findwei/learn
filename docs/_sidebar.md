@@ -1,3 +1,3 @@
 - vue
   - [vue3](page/vue3/index.md)
-  - [vue2](page/prototype.md)
+  - [ES6](page/prototype.md)
