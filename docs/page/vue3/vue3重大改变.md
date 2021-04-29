@@ -54,7 +54,7 @@ export default {
     // setup中，count是一个对象
     // 实例代理中，count是一个count.value
     countRef=ref(0)
-    //ref 后 countRef是一个proxy对象  countRef.value 就是值 
+    //ref 后 countRef是一个proxy对象  countRef.value 就是值  当时再return 出setup时他就不是一个对象所有上面使用的时候不用.value
     // setup中要取值 就必须countRef.value
     return {
       countRef
