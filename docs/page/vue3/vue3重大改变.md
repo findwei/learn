@@ -32,7 +32,7 @@ const app = createApp(App).mount('#app')
     } 
     </script>
 ```
-3. 利用composition api里面setup函数实现代码在一个地方，见下图：
+1. 利用composition api里面setup函数实现代码高度聚合，见下图：
    setup是再所有生命周期钩子函数之前执行
    setup 里面的this是undefiend(他在所有生命周期之前执行嘛 this肯定是undefiend)
 ```javascript
