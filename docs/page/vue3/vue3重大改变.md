@@ -39,7 +39,6 @@ const app = createApp(App).mount('#app')
 <template>
   <h1>count:{{ countRef }}</h1>
   <p>
-  
   </p>
 </template>
 
