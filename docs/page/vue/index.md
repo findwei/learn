@@ -6,3 +6,6 @@
 3. runtime 表示运行时相关功能，虚拟DOM(即：VNode)、diff算法、真实DOM操作等。
 
 vue render实现是借鉴snabbdom
+
+vue渲染流程:
+   <img src="./img/vue渲染.png" alt="" style="display:block;" align="left" />
