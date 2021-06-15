@@ -12,7 +12,7 @@ vue render实现是借鉴snabbdom
   
 
 **computed、watch、methods 之间的区别**
-- methods里面定义的函数，是需要主动调用的，当data里面数据有改变就会调用使用的方法，即使data里面改变的不是我用到的数据也会调用页面中引用的方法
+- methods里面定义的函数，是需要主动调用的，当data里面数据有改变就会调用使用的方法，即使data里面改变的不是我用到的数据也会调用页面中引用的methods里面的方法
   而和watch和computed相关的函数，会自动调用,完成我们希望完成的作用
   例如：
 
