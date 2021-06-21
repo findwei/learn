@@ -1,5 +1,6 @@
-- vue
-  - [vue](page/vue/index.md)
-  - [vue3](page/vue3/index.md)
+  - [modularity](page/modularity/index.md)
+  - vue
+    - [vue](page/vue/index.md)
+    - [vue3](page/vue3/index.md)
   - [mongoDB and mongoose](page/mongoDB/index.md)
   - [ES6](page/prototype.md)
