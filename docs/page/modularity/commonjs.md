@@ -73,3 +73,36 @@ CommonJS使用```exports```导出模块，```require```导入模块
     })()
    ```
 4. 为了避免反复加载同一个模块，nodejs默认开启了模块缓存，如果加载的模块已经被加载过了，则会自动使用之前的导出结果
+   
+## 模块相互引用
+    这一天突发奇想 模块的相互引用会是怎样开始以为会报错就测试了一下居然没有报错
+
+> node中模块的相互引用不会报错 node会把他返回值处理成空对象
+
+eg: index引用模块1 模块1引用模块2 模块2引用模块1 这里模块1与模块2之间相互引用了
+
+```js 
+    //index.js
+    console.log(require('./util1'), 'index')
+    //输出结果
+    // {} undefined util1返回的结果
+    // { util2: NaN } undefined util2返回的结果
+    // { util1: NaN } index引用util1返回的结果
+```
+```js 
+    //utils1.js
+    let c = require('./util2')
+    console.log(c, c.b, 'util2返回的结果')
+    module.exports = {
+        util1: 123 + c.util2
+    }
+```
+```js 
+    //utils2.js
+    let d = require('./util1')
+    console.log(d, d.a, 'util1返回的结果')
+    module.exports = {
+        util2: 456 + d.util2
+    }
+```
+从上面代码可以看出来 当运行到utils2的时候发现依赖utils1 这时候utails返回一个空对象，继续执行utails2 
