@@ -1,3 +1,4 @@
 - [模块发的发展](/page/modularity/index.md)
-- [commonjs](/page/modularity/commonjs.md)
+- [commonjs 重要](/page/modularity/commonjs.md)
 - [AMDandCMD](/page/modularity/AMD-and-CMD.md)
+- [es6 重要](/page/modularity/es6.md)
