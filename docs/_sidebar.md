@@ -1,6 +1,7 @@
-  - [modularity](page/modularity/index.md)
+  - [modularity·模块化](page/modularity/index.md)
   - vue
     - [vue](page/vue/index.md)
     - [vue3](page/vue3/index.md)
   - [mongoDB and mongoose](page/mongoDB/index.md)
   - [ES6](page/prototype.md)
+  - [移动端](page/mobile/index.md)
