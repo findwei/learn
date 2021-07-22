@@ -1,13 +1,14 @@
 <!-- ## viewport  -->
     viewport 默认是980px
     手机端如何实现缩放和按照什么像素来展示 是按照css像素展示还是物理设备像素展示
+    详细信息：https://www.runoob.com/w3cnote/viewport-deep-understanding.html
 
 | 属性          | 值                                                                                                          |
 | ------------- | ----------------------------------------------------------------------------------------------------------- |
 | width         | 可视宽度 为一个正整数或者是一个字符串`device-width`(设备的实际宽度=>css像素)，不建议为正整数 因为安卓不支持 |
 | height        | 可视高度                                                                                                    |
 | user-scalable | 是否允许用户进行页面缩放 no/yes                                                                             |
-| initial-scale | 页面初始缩放值                                                                                              |
+| initial-scale | 页面初始缩放 `width与initial-scalet同时设置取最大的值`                                                    |
 | mininum-scale | 页面初始缩放值                                                                                              |
 | maxinum-scale | 页面初始缩放值                                                                                              |
 
@@ -36,12 +37,15 @@
                             3、所以写全了，可以避免一些bug
                     2、ios10不支持user-scalable=no，后面事件解决（阻止document的touchstart的默认行为）
             initial-scale有值的情况下算页面的公式
-                缩放比=css像素/viewport宽度
+
+                页面缩放比=css像素/viewport宽度
                 viewport宽度=css像素/缩放比
+                dpr=设备物理像素/css像素
+                css像素=设备物理像素/dpr
         -->
         <!-- 
             750/980=0.77
-
+            
             0.5=375/750=0.5
             375/0.5=750
         -->
