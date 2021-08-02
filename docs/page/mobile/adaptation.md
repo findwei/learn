@@ -74,7 +74,264 @@
 
 ### dpr缩放
 
-    为rem铺路
+*为rem铺路*
+
+DPR缩放适配     根据dpr的值，把视口进行缩放，缩放到物理像素，也就是把css像素的值设置成物理像素，让所有的设备都变成一个css像素对应一个设备像素
+
+    例如：iphone6 puls
+        物理像素 ：750 css像素 ：375 dpr : 2
+        利用dpr 将css像素设置成 750
+
+> rem借鉴这种方式 实现了px转rem不用麻烦的计算 是一种相当好的适配方案
+
+```js
+ (function(){
+    /*
+        375*2   750 
+        320*2   640
+
+        375/?=750   => 375/750=2
+        1/dpr
+
+        320/scale=640   =>   scale=320/640   1/2
+        */
+
+    var meta=document.querySelector('meta[name="viewport"]');
+    var scale=1/window.devicePixelRatio;
+
+    if(!meta){
+        //这个条件成立说明用户没有写meta标签，我需要创建一个
+        meta=document.createElement('meta');
+        meta.name='viewport';
+        meta.content='width=device-width,initial-scale='+scale+',user-scalable=no,minimum-scale='+scale+',maximum-scale='+scale+'';
+        document.head.appendChild(meta);
+    }else{
+        meta.setAttribute('content','width=device-width,initial-scale='+scale+',user-scalable=no,minimum-scale='+scale+',maximum-scale='+scale+'');
+    }
+})();
+```
         
 ### rem适配 （主流）
+
+**了解rem前先了解em**
+
+     em     作为font-size的单位时，其代表父元素的字体大小（就是1em=父级的font-size大小），作为其他属性单位时，代表自身字体大小(就是1em=自己的font-size大小)          
+            font-size:20px      1em=20px
+            问题：
+                1、chrom下有最小字体限制，必需为12px，所以这个值不能小于12
+                2、如果两个一样的元素，但是里面字体不一样，那就不能统一设置了。或者元素字体变化了，就又要统一设置一遍
+                
+    rem     CSS3新增的一个相对单位，是相对于根元素字体大小；
+
+            r   root
+            html{font-size:20px}        2rem=40px
+
+
+em 换算如下：
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimum-scale=1,maximum-scale=1">
+        <title></title>
+        <style>
+            .em{
+                font-size: 30px;
+                border: 1px solid #000;
+                width: 10em;    /* 1em=30px */
+                height: 10em;
+            }
+            .em p{
+                font-size: 2em; /* 1em=30px */
+                width:5em; /* 1em=自己的font-size:2em=60px */
+            }
+ 
+            html{
+                font-size: 20px;
+            }
+            .rem{
+                width: 10rem;   /* 1rem=20px; */
+                height: 10rem;
+ 
+                border: 1px solid #000;
+            }
+        </style>
+    </head>
+    <body>
+     
+        <div class="em">
+            <p>em-</p>
+        </div>
+        <div class="rem">
+            rem-
+        </div>
+    </body>
+</html>
+```
+**rem 布局原理**
+
+    rem适配的原理：把所有的设备都分成相同的若干份，再计算元素宽度所占的份数
+
+    1、元素适配的宽度（算出来的）
+        =元素所占的列数*一列的宽
+        =元素所占的列数*1rem
+
+    2、元素在设计稿里的宽度（量出来的）
+    3、列数（随便给的）
+        100
+    4、一列的宽度（算出来的）
+        =屏幕实际的宽度（css像素）/列数
+        一列的宽度就是1rem
+
+    5、元素实际占的列数（算出来的）
+        =元素设计稿里的宽/一列的宽
+        =元素设计稿里的宽/1rem
+
+    var colWidth=屏幕实际的宽度（css像素）/100;
+    50*colWidth //50列所占的宽
+        
+    var colWidth=0; //一列的宽
+    var col=100;    //列数
+
+    //分别算出iphone5与iphone6里面一列的宽度
+    colWidth=375/100;   //3.75px    iphone6 
+    colWidth=320/100;   //3.2px     iphone5
+
+    //假如一个div需要占10列，算出div的分别在两个手机里的宽度
+    var divWidth=0;     //div的宽度
+    divWidth=10*3.75;   //37.5px    iphone6里div的宽度
+    divWidth=10*3.2;    //32px      iphone5里div的宽度
+        
+    //根据设计稿里元素的宽算出来它所占的列数
+    var divWidth=50;    //div在设计稿里实际的宽（量出来的）
+    var divCol=0;       //要算出div所占的列数
+
+    //以iphone6为例，一列的宽为3.75px，那50px占多少列？
+    divCol=50/3.75;     //13.333    在iphone6里所占的列数
+    divCol=50/3.2;      //15.625    在iphone5里所占的列数
+
+    /* html{
+        font-size:屏幕实际的宽度（css像素）/列数
+    } */
+
+**设置根节点大小**
+
+        1、元素适配的宽度=元素所占的列数*1rem
+        2、一列的宽度=屏幕实际的宽度（css像素）/列数
+        3、元素实际占的列数=元素设计稿里的宽/1rem
+            
+        (function(){
+            var html=document.documentElement;  //html
+            var width=html.clientWidth;     //css像素
+                
+            console.log(width);
+                
+            html.style.fontSize=width/16+'px';  //把屏幕分成了16列，以iphone为例得出一个列的值为整数
+        })();
+
+
+        //iphone5
+        //1rem=20px;        一列的宽度
+        //80/1rem=80/20=4;  元素实际占的列数
+        //4*1rem=4rem;      元素适配的宽度
+
+
+        //iphone6
+        //1rem=375/16=23.4375;  一列的宽度
+        //4*1rem=4*23.4375=93.75;   元素适配的宽度
+        //4*93.75=375;      css的宽度
+
+        //真正切图时候的方法!!!
+        //1、算rem，还是根据设备实际的css像素算
+        //2、量出一个元素在设计稿里的尺寸
+        //3、拿这个尺寸除以DPR值后，再去换算rem
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+        <title></title>
+        <style>
+            body{
+                margin: 0;
+            }
+ 
+            div{
+                background: green;
+                float: left;
+                 width: 1.875rem;
+                 height: 1.875rem;
+            }
+            img{
+                width: 7.5rem;
+            }
+        </style>
+        <script>
+            (function(doc, win, designWidth) {
+                // designWidth 这是设计图的尺寸
+
+                // 获取html元素
+                const html = doc.documentElement;
+                //const dpr = win.devicePixelRatio; //dpr
+                
+                function  refreshRem() { //  这里不能使用箭头函数 在ios12上面兼容有问题
+                    // 获取 视口宽度
+                    const clientWidth = html.clientWidth;
+                    // 
+                    if (clientWidth >= designWidth) { //给宽度一个最大值，如果设备的宽度已经超过设计稿的尺寸了，统一按一个值去算（传的第三个参数）
+                        html.style.fontSize = '100px';
+                    } else {
+                        //html.style.fontSize= 16 * clientWidth / 375 + 'px';
+                        // 将视口分成100份 
+                        html.style.fontSize = 100 * (clientWidth / designWidth) + 'px';
+                    }
+                };
+                 
+                //dom加载完的一个事件
+                doc.addEventListener('DOMContentLoaded', refreshRem);
+            })(document, window, 750);
+            /*
+                16 * clientWidth / 375 
+                    => clientWidth / 375 * 16 
+                    => clientWidth / (375 / 16)
+ 
+                //这么写的目的是为了找一个基准点，就是iphone6
+ 
+                320 / (375 / 16) = 13.653;  iphone5 
+                375 / (375 / 16) = 16;      iphone6
+                414 / (375 / 16) = 17.664;  iphone6 p
+ 
+                320 / 16 = 20;
+                375 / 16 = 23.4375;
+                424 / 16 = 26.5
+             */
+        </script>
+    </head>
+    <body>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <img src="images/img_12.jpg" alt="">
+    </body>
+</html>
+
+```
+ 目前主流的rem 适配的方案
+ 1. hotcss
+     https://github.com/imochen/hotcss 
+
+ 2. flexible
+     https://github.com/amfe/lib-flexible
+
+###  VW、VH适配
+
+
+
+
+
+
+
 

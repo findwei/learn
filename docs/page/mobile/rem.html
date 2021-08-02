@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimum-scale=1,maximum-scale=1"
+        id="view">
+    <title>Document</title>
+    <script>
+
+        (function (doc, win, designWidth) {
+            // designWidth 这是设计图的尺寸
+
+            // 获取html元素
+            const html = doc.documentElement;
+            //const dpr = win.devicePixelRatio; //dpr
+
+            function refreshRem() {
+                // 获取 视口宽度
+                const clientWidth = html.clientWidth;
+                console.log(clientWidth)
+                // 
+                if (clientWidth > designWidth) { //给宽度一个最大值，如果设备的宽度已经超过设计稿的尺寸了，统一按一个值去算（传的第三个参数）
+                    html.style.fontSize = '100px';
+                } else {
+                    //html.style.fontSize= 16 * clientWidth / 375 + 'px';
+                    // 将视口分成100份 
+                    html.style.fontSize = 100 * (clientWidth / designWidth) + 'px';
+                }
+            };
+
+            //dom加载完的一个事件
+            doc.addEventListener('DOMContentLoaded', refreshRem);
+        })(document, window, 750);
+    </script>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+        }
+
+        div {
+            width:1.875rem;
+            flex: none;
+
+        }
+
+        div:nth-child(1) {
+            background: red;
+        }
+
+        div:nth-child(2) {
+            background: green;
+        }
+
+        div:nth-child(3) {
+            background: blue;
+        }
+
+        div:nth-child(4) {
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <!-- <div>5</div> -->
+</body>
+
+</html>
