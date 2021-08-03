@@ -320,15 +320,58 @@ em 换算如下：
 
 ```
  目前主流的rem 适配的方案
- 1. hotcss
+ 1. hotcss （预处理语言来换算）
      https://github.com/imochen/hotcss 
 
  2. flexible
      https://github.com/amfe/lib-flexible
 
-###  VW、VH适配
+###  VW、VH适配 （这是未来最好的方案目前因为支持不好所以应用少）
+
+    支持情况
+        >=ios 8 
+        >=Android 4.4
+
+    vw      Viewport's width的简写，1vw等于视口宽度的1% 相当于把视口分成100份
+    vh      Viewport's height的简写，1vh等于视口高度的1%
+    vmin    取vw和vh中最小的值
+    vmax    取vw和vh中最大的值
 
 
+1. 方案一：通篇使用vw 
+
+    iphone6
+    1vw=375/100=3.75px;
+
+    iphone6 p
+    1vw=414/100=4.14px;
+
+    750/2/3.75=100
+        => 750/(2*3.75)
+        => 750/(7.5)
+        => 750/(750/100)
+        => 750/750*100
+
+        100 * (clientWidth / designWidth)
+例如：通过scss 自动设置 [预处理语言处理单位](/page/mobile/[选修]移动端适配所需资料/03-移动端事件课件)
+
+```scss
+    @function vw($px){
+    @return $px / 750 * 100vw;
+    }
+    
+    div{
+        width: vw(250);
+        height: vw(250);
+    }
+```
+1. 方案二：通过vw设置根节点字体大小，页面里的尺寸依然使用rem
+
+   就是利`vw`用来设置根节点的字体大小
+   
+
+    
+    
 
 
 
