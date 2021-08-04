@@ -1,6 +1,8 @@
-- mobile
+- **mobile布局**
   - [mobile与像素描述](page/mobile/index.md)
   - [viewport—mate](page/mobile/viewport.md)
   - [重置默认样式](page/mobile/styleReset.md)
   - [适配方案](page/mobile/adaptation.md)
   - [比较普遍的问题](page/mobile/issue.md)
+- **mobile事件**
+  - [移动端事件](page/mobile/event/index.md)
