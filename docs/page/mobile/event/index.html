@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        div {
+            width: 500px;
+            height: 500px;
+            background-color: #f40;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">123</div>
+    <script>
+        var box = document.querySelector('#box'); //iso10 里面querySelector不支持id选择器 
+        box.addEventListener('touchstart', () => {
+            console.log('手指按下去了');
+        });
+
+        box.addEventListener('touchmove', () => {
+            console.log('手指滑动了');
+        });
+
+        box.addEventListener('touchend', () => {
+            console.log('手指抬起了');
+        });
+        box.addEventListener('click', () => {
+            console.log('click');
+        });
+    </script>
+</body>
+
+</html>
