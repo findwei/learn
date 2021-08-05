@@ -355,7 +355,7 @@ em 换算如下：
         => 750/750*100
 
         100 * (clientWidth / designWidth)
-例如：通过scss 自动设置 [预处理语言处理单位](/page/mobile/[选修]移动端适配所需资料/03-移动端事件课件)
+例如：通过scss 自动设置 [预处理语言处理单位](/page/mobile/[选修]移动端适配所需资料/01-移动端布局课件/css)
 
 ```scss
     @function vw($px){
