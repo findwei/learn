@@ -6,3 +6,4 @@
   - [比较普遍的问题](page/mobile/issue.md)
 - **mobile事件**
   - [移动端事件](page/mobile/event/index.md)
+  - [移动端动画](page/mobile/event/animation.md)
