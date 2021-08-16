@@ -1,2 +1,3 @@
 - ES6
-  - [es6](page/es6/index.md)
+  - [概述](page/es6/index.md)
+  - [let_const](page/es6/let_const.md)
