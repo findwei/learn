@@ -1,0 +1,2 @@
+- ES6
+  - [es6](page/es6/index.md)
