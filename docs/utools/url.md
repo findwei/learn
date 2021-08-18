@@ -31,6 +31,7 @@ function delParam(paramKey) {
 # 获取url中指定参数的值
 
 ```js
+// 方法一
 function getQueryVariable(variable) {
   var query = window.location.search.substring(1);
   var vars = query.split("&");
@@ -40,4 +41,10 @@ function getQueryVariable(variable) {
   }
   return (false);
 }
+// 方法二
+function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
 ```
