@@ -97,3 +97,140 @@ function (...形参名){
 
 ## 对对象展开 ES7 <!-- {docsify-ignore} -->
 
+```js
+
+let a = [1,2,3]
+let b = [...a]
+ 
+ console.log(a===b) //false
+
+let obj={
+    a:1,
+    b:2,
+    c:{
+        d:3
+    }
+};
+let obj1 = {
+    ...obj
+};
+console.log(obj===obj1); //false 
+console.log(obj.c===obj1.c) //true 因为是浅克隆
+
+```
+
+# 明确函数的双重用途
+
+ES6提供了一个特殊的API，可以使用该API在函数内部，判断该函数是否使用了new来调用
+
+详情见[new.target](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new.target)
+```js
+new.target 
+//该表达式，得到的是：如果没有使用new来调用函数，则返回undefined
+//如果使用new调用函数，则得到的是new关键字后面的函数本身
+
+function Person(firstName, lastName) {
+    //判断是否是使用new的方式来调用的函数
+
+    //过去的判断方式 但是这种方式不好 可以使用强行传入一个一样的对象例如： const p3 = Person.call(new Person("你", "好"), "你", "好") 这种调用方式绕开
+    // if (!(this instanceof Person)) {
+    //     throw new Error("该函数没有使用new来调用")
+    // }
+
+    if (new.target === undefined) {
+        throw new Error("该函数没有使用new来调用")
+    }
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.fullName = `${firstName} ${lastName}`;
+}
+
+const p1 = new Person("你", "好");
+console.log(p1)
+
+const p2 = Person("你", "好");
+console.log(p2);
+
+const p3 = Person.call(p1, "你", "好")
+console.log(p3);
+
+```
+
+# 箭头函数
+
+回顾：this指向
+
+1. 通过对象调用函数，this指向对象
+2. 直接调用函数，this指向全局对象
+3. 如果通过new调用函数，this指向新创建的对象
+4. 如果通过apply、call、bind调用函数，this指向指定的数据
+5. 如果是DOM事件函数，this指向事件源
+
+## 使用语法 <!-- {docsify-ignore} -->
+
+箭头函数是一个函数表达式，理论上，任何使用函数表达式的场景都可以使用箭头函数
+
+- 什么是函数表达式：使用了运算符号
+- 什么函数声明：使用的声明关键字
+
+完整语法：
+
+```js
+(参数1, 参数2, ...)=>{
+    //函数体
+}
+```
+
+如果参数只有一个，可以省略小括号
+
+```js
+参数 => {
+
+}
+```
+
+如果箭头函数只有一条返回语句，可以省略大括号，和return关键字
+
+```js
+参数 => 返回值
+```
+
+## 注意细节 <!-- {docsify-ignore} -->
+
+- 箭头函数里面的 this 指向与调用没有关系 只和定义位置有关系 在哪里定义的this就是定义位置的this （箭头函数里面没有this）  
+- 箭头函数中，不存在this、arguments、new.target，**如果使用了，则使用的是函数外层的对应的this**、arguments、new.target
+- 箭头函数没有原型
+- 箭头函数不能作用构造函数使用 （因为没有原型嘛）
+
+> 对象的属性最好不要用箭头函数 因为对象的属性this是window 例如：
+```js
+let obj={
+    a:123,
+    b:()=>{
+        // 因为箭头函数没有this 就会取父级的this 也就是obj obj里面this 是window
+        console.log(this) //这里的this 是指向window
+    }
+}
+// 相对于下面这样
+let obj={
+    a:123,
+    b:this //this就是window
+}
+
+let obj={
+    a:123,
+    b:function(){
+        console.log(this) //this是obj
+    } 
+}
+```
+
+## 应用场景 <!-- {docsify-ignore} -->
+
+1. **临时性使用的函数**，并不会可以调用它，比如：
+   1. 事件处理函数
+   2. 异步处理函数
+   3. 其他临时性的函数
+2. 为了绑定外层this的函数
+3. 在不影响其他代码的情况下，保持代码的简洁，最常见的，数组方法中的回调函数
+

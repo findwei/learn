@@ -37,12 +37,29 @@
 
         // console.log(a)
 
-        const a = {
-            b: 123
+        // const a = {
+        //     b: 123
+        // }
+        // console.log(a.b)
+        // a.b = 456
+        // console.log(a)
+
+        // const fun = () => {
+        //     console.log(this);
+        // }
+        let obj = {
+            a: 123,
+            m: function () {
+                console.log(this);
+                const fun = (...arg) => {
+                    console.log(this)
+                    console.log(arg)
+                    console.log(arguments)
+                }
+                fun(2, 3)
+            }
         }
-        console.log(a.b)
-        a.b = 456
-        console.log(a)
+        obj.m(1)
     </script>
 </body>
 
