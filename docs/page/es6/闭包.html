@@ -6,6 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #btnc{
+            width: 500px;
+            height: 500px;
+            background-color: aquamarine;
+        }
+    </style>
 </head>
 
 <body>
@@ -47,19 +54,28 @@
         // const fun = () => {
         //     console.log(this);
         // }
-        let obj = {
-            a: 123,
-            m: function () {
-                console.log(this);
-                const fun = (...arg) => {
-                    console.log(this)
-                    console.log(arg)
-                    console.log(arguments)
-                }
-                fun(2, 3)
-            }
-        }
-        obj.m(1)
+        // let obj = {
+        //     a: 123,
+        //     m: function () {
+        //         console.log(this);
+        //         const fun = (...arg) => {
+        //             console.log(this)
+        //             console.log(arg)
+        //             console.log(arguments)
+        //         }
+        //         fun(2, 3)
+        //     }
+        // }
+        // obj.m(1)
+        // let fun = function () {
+        //     if (true) {
+        //         console.log(true);
+        //         return false
+        //     } else {
+        //         console.log('else');
+        //     }
+        //     console.log(456);
+        // }
     </script>
 </body>
 
