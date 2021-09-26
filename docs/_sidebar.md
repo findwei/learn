@@ -6,3 +6,4 @@
   - [移动端](page/mobile/index.md)
   - [utools](utools/index.md)
   - [一些小知识](knowledge/index.md)
+  - [typeScript](page/typeScript/index.md)
