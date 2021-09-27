@@ -3,3 +3,4 @@
   - [node中搭建ts](page/typeScript/node中搭建ts.md)
   - [基本类型约束知识部分](page/typeScript/基本类型约束知识部分.md)
   - [扩展类型-枚举](page/typeScript/扩展类型-枚举.md)
+  - [模块化](page/typeScript/模块化.md)
