@@ -4,3 +4,4 @@
   - [基本类型约束知识部分](page/typeScript/基本类型约束知识部分.md)
   - [扩展类型-枚举](page/typeScript/扩展类型-枚举.md)
   - [模块化](page/typeScript/模块化.md)
+  - [接口和类型兼容性](page/typeScript/接口和类型兼容性.md)
