@@ -5,3 +5,4 @@
   - [扩展类型-枚举](page/typeScript/扩展类型-枚举.md)
   - [模块化](page/typeScript/模块化.md)
   - [接口和类型兼容性](page/typeScript/接口和类型兼容性.md)
+  - [类](page/typeScript/类.md)
