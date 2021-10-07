@@ -1,4 +1,5 @@
 1. vue 3中相比vue2 vue3没有构造函数了
+
 vue2 main里面 相比vue3
 
 ``` javascript
@@ -17,8 +18,11 @@ const app = createApp(App).mount('#app')
 ```
 
 2. vue3组件里面
+
  vue2里面this指向 vue当前组件实例
+
  vue3里面this指向的是一个代理（proxy）代理的当前组件实例
+
  ![avatar](./img/vue3的组件实例代理.jpg)
 ``` javascript
 < template>
@@ -33,8 +37,11 @@ const app = createApp(App).mount('#app')
     </script>
 ```
 1. 利用composition api里面setup函数实现代码高度聚合，见下图：
+
    setup是再所有生命周期钩子函数之前执行
-   setup 里面的this是undefiend(他在所有生命周期之前执行嘛 this肯定是undefiend)
+
+   setup 里面的this是undefiend(他在所有生命周期之前执行嘛 this肯定是`undefiend`
+
 ```javascript
 <template>
   <h1>count:{{ countRef }}</h1>

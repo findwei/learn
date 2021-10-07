@@ -1,3 +1,4 @@
 - vue3
   - [vue3](page/vue3/index.md)
+  - [vue3重大改变](page/vue3/vue3重大改变.md)
   - [veit](page/vue3/veit.md)
