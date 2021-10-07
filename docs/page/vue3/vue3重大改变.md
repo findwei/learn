@@ -58,7 +58,7 @@ export default {
     // console.log(this); // this -> undefined
 
     // setup中，count是一个对象
-    // 实例代理中，count是一个count.value
+    // 实例代理中，count是count.value
     countRef=ref(0)
     //ref 后 countRef是一个proxy对象  countRef.value 就是值  当时再return 出setup时他就不是一个对象所有上面使用的时候不用.value
     // setup中要取值 就必须countRef.value
@@ -69,7 +69,10 @@ export default {
 }
 
 ```
-   vue2 
+   **vue2** 
+
    ![avatar](./img/option%20api.jpeg) 
-   vue3
+   
+   **vue3**
+   
    ![avatar](./img/composition%20api.jpg)
