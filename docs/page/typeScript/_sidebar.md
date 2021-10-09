@@ -6,3 +6,4 @@
   - [模块化](page/typeScript/模块化.md)
   - [接口和类型兼容性](page/typeScript/接口和类型兼容性.md)
   - [类](page/typeScript/类.md)
+  - [泛型](page/typeScript/泛型.md)
