@@ -188,5 +188,79 @@ var frig = new Frige();
 frig.join(new Elephant());
 
 ```
+先读懂下面链接文章 再看下面的类
+[查看prototype,__proto__,constructor的关系](https://blog.csdn.net/cc18868876837/article/details/81211729)
 
+# 类：构造函数的语法糖
+
+## 传统的构造函数的问题
+
+1. 属性和原型方法定义分离，降低了可读性
+2. 原型成员可以被枚举
+3. 默认情况下，构造函数仍然可以被当作普通函数使用
+
+## 类的特点
+
+1. 类声明不会被提升，与 let 和 const 一样，存在暂时性死区
+2. 类中的所有代码均在严格模式下执行
+3. 类的所有方法都是不可枚举的
+4. 类的所有方法都无法被当作构造函数使用
+5. 类的构造器必须使用 new 来调用
+
+```js
+// ********** 以前创建类的写法 **********
+//面向对象中，将 下面对一个对象的所有成员的定义，统称为类
+
+//构造函数  构造器
+function Animal(type, name, age, sex) {
+    this.type = type;
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+}
+
+//定义实例方法（原型方法）
+Animal.prototype.print = function () {
+    console.log(`【种类】：${this.type}`);
+    console.log(`【名字】：${this.name}`);
+    console.log(`【年龄】：${this.age}`);
+    console.log(`【性别】：${this.sex}`);
+}
+
+const a = new Animal("狗", "旺财", 3, "男");
+a.print();
+
+for (const prop in a) {
+    console.log(prop)
+    // 原型上面的成员能枚举
+}
+
+// ********** es6 创建类 **********
+
+// es6 创建类
+class Animal {
+    constructor(type, name, age, sex) {
+        this.type = type;
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+
+    print() {
+        console.log(`【种类】：${this.type}`);
+        console.log(`【名字】：${this.name}`);
+        console.log(`【年龄】：${this.age}`);
+        console.log(`【性别】：${this.sex}`);
+    }
+}
+
+const a = new Animal("狗", "旺财", 3, "男");
+a.print();
+
+for (const prop in a) {
+    console.log(prop)
+    //用class创建 原型上面的成员不能枚举
+}
+
+```
 
