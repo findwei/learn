@@ -7,3 +7,4 @@
   - [接口和类型兼容性](page/typeScript/接口和类型兼容性.md)
   - [类](page/typeScript/类.md)
   - [泛型](page/typeScript/泛型.md)
+  - [在谈类](page/typeScript/在谈类.md)
