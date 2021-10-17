@@ -1,0 +1,33 @@
+<!--
+ * @Author: 钱巍
+ * @Date: 2021-10-16 20:55:16
+ * @LastEditTime: 2021-10-16 20:57:53
+ * @LastEditors: 钱巍
+ * @Description: 
+ * @FilePath: \vue_heimaohuic:\Users\pc\Desktop\node\html.html
+ * 没有理想，何必远方。
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        axios.get('http://121.40.93.96:50001/list')
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    </script>
+</body>
+
+</html>
