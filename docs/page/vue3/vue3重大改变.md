@@ -38,9 +38,9 @@ const app = createApp(App).mount('#app')
 ```
 1. 利用composition api里面setup函数实现代码高度聚合，见下图：
 
-   setup是再所有生命周期钩子函数之前执行
+   setup是在所有**生命周期钩子函数之前**执行
 
-   setup 里面的this是undefiend(他在所有生命周期之前执行嘛 this肯定是`undefiend`
+   setup 里面的**this是undefiend**(他在所有生命周期之前执行嘛 this肯定是`undefiend`
 
 ```javascript
 <template>
@@ -60,10 +60,12 @@ export default {
     // setup中，count是一个对象
     // 实例代理中，count是count.value
     countRef=ref(0)
-    //ref 后 countRef是一个proxy对象  countRef.value 就是值  当时再return 出setup时他就不是一个对象所有上面使用的时候不用.value
+    //ref 后 countRef是一个proxy对象  countRef.value就是值  当时再return出setup时他就不是一个对象所有上面使用的时候不用.value
     // setup中要取值 就必须countRef.value
+
+    //  在实例代理中，countRef是一个countRef.value
     return {
-      countRef
+      countRef //在这里return 出去的时候做了处理的 是取的countRef.value
     };
   }
 }
