@@ -1,8 +1,12 @@
 # 在node中搭建TS开发环境
 
 # 安装TypeScript
+建议全局安装 因为里面有个命令行工具tsc
+```js 
+npm i -g typescript 
+```
 
-默认情况下，TS会做出下面几种假设：
+安装完成这样运行会报错 默认情况下，TS会做出下面几种假设：
 
 1. 假设当前的执行环境是dom
 2. 如果代码中没有使用模块化语句（import、export），便认为该代码是全局执行
@@ -13,6 +17,8 @@
 1. 使用tsc命令行的时候，加上选项参数
 2. 使用ts配置文件，更改编译选项
 ```ts
+// tsconfig.json ts配置文件
+// tsc --init 生成ts配置文件
 {
     "compilerOptions": { //编译选项
         "target": "es2016", //配置编译目标代码的版本标准 
