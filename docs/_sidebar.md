@@ -8,3 +8,4 @@
   - [一些小知识](knowledge/index.md)
   - [typeScript](page/typeScript/index.md)
   - [webpack](page/webpack/index.md)
+  - [java](page/java/index.md)

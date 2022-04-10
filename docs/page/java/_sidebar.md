@@ -1,0 +1,3 @@
+- java
+  - [java](page/java/index.md)
+  - [java语言基本结构](page/java/structure.md)
