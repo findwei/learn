@@ -10,7 +10,7 @@
     "dev": "docsify serve docs --port 4000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {                                                                                               
+  "repository": {
     "type": "git",
     "url": "git@gitee.com:ccl0108/learn.git"
   },
