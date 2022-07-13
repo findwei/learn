@@ -52,6 +52,7 @@
 
   java.exe 执行工具
   
+
 **JDK 包含 JRE 包含 JVM**  
 
 安装JDK后 生成的文件解释默认路径 C:\Program Files\java\jdk1.8.0_201
@@ -78,7 +79,7 @@
 规约 
 
     类名 使用大驼峰命名
-    
+
 ```java
 // class 前面加了 public 关键字 要请 当前类名必须和文件名 一样 
 public class Cs {
@@ -88,6 +89,22 @@ public class Cs {
 }
 // javac Cs.java => java Cs
 ```
+
+注释：
+
+​		1.单行注释
+​		//
+
+​		2.多行注释
+​		/*
+
+​		*/
+
+​		3.文档注释
+
+​		/**
+
+​		*/
 
 
 
