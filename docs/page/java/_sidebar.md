@@ -1,3 +1,4 @@
 - java
   - [java](page/java/index.md)
   - [java语言基本结构](page/java/structure.md)
+  - [java基本语法](page/java/baseCadre.md)
