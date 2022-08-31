@@ -3,3 +3,4 @@
   - [java语言基本结构](page/java/structure.md)
   - [java基本语法](page/java/baseCadre.md)
   - [java array](page/java/array.md)
+  - [java 类](page/java/object.md)

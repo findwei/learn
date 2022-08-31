@@ -602,5 +602,3 @@ public static void main(String[] args){}
 
 ​	2.主方法里面有args参数  是一个String[]类型  我们是可以传递参数进去  给JVM
 
-
-
