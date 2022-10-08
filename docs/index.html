@@ -8,6 +8,11 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <style>
+    .footer-ba a{
+        color: #000;
+    }
+  </style>
 </head>
 
 <body>
@@ -19,6 +24,14 @@
       loadSidebar: true,
       subMaxLevel: 6,
       search: 'auto',
+      footer: {
+        // copy: '<span>Copyright &copy; 2022 webber 💖 &nbsp</span>',
+        copy: '<span></span>',
+        auth: '<a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备2022022757号-1</a>',
+        pre: '<hr/>',
+        style: 'font-size: 18px; text-align: center;color:#000;',
+        class: 'footer-ba'
+      },
     }
 
   </script>
@@ -26,6 +39,7 @@
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="//unpkg.com/docsify-footer-enh/dist/docsify-footer-enh.min.js"></script>
   <script>
 
   </script>
