@@ -8,3 +8,6 @@
   - [类](page/typeScript/类.md)
   - [泛型](page/typeScript/泛型.md)
   - [在谈类-ts进阶](page/typeScript/在谈类.md)
+  - [装饰器](page/typeScript/装饰器.md)
+  - [类型演算](page/typeScript/类型演算.md)
+  - [声明文件](page/typeScript/声明文件.md)
