@@ -1,11 +1,19 @@
 <!--
  * @Author: 钱巍
  * @Date: 2022-11-25 12:02:44
- * @LastEditTime: 2022-11-25 14:16:58
+ * @LastEditTime: 2023-03-07 14:37:22
  * @LastEditors: 钱巍
- * @Description: 
- * @FilePath: \auto.javascriptd:\wei.qian\learn\docs\page\javascript\index.md
+ * @Description:
+ * @FilePath: \learn\docs\page\javascript\index.md
  * 没有理想，何必远方。
 -->
+
 # 基础知识
-[基础pdf文档](./img/js%E5%9F%BA%E7%A1%80.pdf)
+
+[基础 pdf 文档](./img/js%E5%9F%BA%E7%A1%80.pdf)
+
+# this
+
+> this 是一个对象
+
+js 里面 this 是动态得取决与谁调用 this 指向谁

@@ -18,4 +18,4 @@ let islock = function () {
 }
 $(document).ready(function () {
     islock();
-})X
+})

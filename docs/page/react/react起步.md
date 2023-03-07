@@ -59,11 +59,11 @@ React是由**Facebook**研发的、用于**解决UI复杂度**的开源**JavaScr
 直接在页面上使用React，引用下面的JS
 
 ```html
-    <!-- React的核心库，与宿主环境无关 -->
+<!-- React的核心库，与宿主环境无关 -->
 <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
 <!-- 依赖核心库，将核心的功能与页面结合 -->
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
- <!-- 编译JSX -->
+ <!--babel 编译JSX -->
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 ```
 
@@ -96,7 +96,7 @@ JS的扩展语法，需要使用babel进行转义。
 官方：create-react-app
 第三方：next.js、umijs
 
-凡是使用JSX的文件，必须导入React  jsx里面有使用到react的方法 createElement() reder()
+凡是使用JSX的文件，**必须导入React  jsx里面有使用到react的方法** createElement() reder()
 
 # 开发环境搭建
 
