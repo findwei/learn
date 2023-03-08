@@ -300,7 +300,7 @@ export default function Comp(props) {
 }
 ```
 
-如果给自定义组件传递元素内容，则 React 会将元素内容作为 children 属性传递过去。
+如果给自定义组件传递元素内容，则 React 会将元素内容作为 **children属性** 传递过去。
 
 # 表单
 
