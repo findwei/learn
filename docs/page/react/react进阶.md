@@ -634,4 +634,102 @@ export default function Test() {
     </div>
   );
 }
+
 ```
+
+# Portals
+
+插槽：将一个 React 元素渲染到指定的 DOM 容器中
+
+这个插槽与 vue 的插槽**不是一个概念**，vue 的插槽在 react 里面相当于就是属性传递值 默认传递的属性是 children
+
+ReactDOM.createPortal(React 元素, 真实的 DOM 容器)，该函数返回一个 React 元素
+
+**注意事件冒泡**
+
+1. React 中的事件是包装过的
+2. 它的事件冒泡是根据虚拟 DOM 树来冒泡的，与真实的 DOM 树无关。
+
+**见下面 React中的事件标题**
+
+
+# 错误边界
+
+默认情况下，若一个组件在**渲染期间**（render）发生错误，会导致整个组件树全部被卸载
+
+错误边界：是一个组件，该组件会捕获到渲染期间（render）子组件发生的错误，并有能力阻止错误继续传播
+
+**让某个组件捕获错误**
+
+1. 编写生命周期函数 getDerivedStateFromError
+   1. 静态函数
+   2. 运行时间点：渲染子组件的过程中，发生错误之后，在更新页面之前
+   3. **注意：只有子组件发生错误，才会运行该函数**
+   4. 该函数返回一个对象，React会将该对象的属性覆盖掉当前组件的state
+   5. 参数：错误对象
+   6. 通常，该函数用于改变状态
+2. 编写生命周期函数 componentDidCatch
+   1. 实例方法
+   2. 运行时间点：渲染子组件的过程中，发生错误，更新页面之后，由于其运行时间点比较靠后，因此不太会在该函数中改变状态
+   3. 通常，该函数用于记录错误消息
+
+
+**细节**
+
+某些错误，错误边界组件无法捕获
+
+1. 自身的错误
+2. 异步的错误
+3. 事件中的错误
+4. 服务端渲染
+
+总结：仅处理渲染子组件期间的同步错误
+
+```javascript
+import React, { PureComponent } from "react";
+export default class ErrorBound extends PureComponent {
+  state = {
+    hasError: false,
+  };
+  static getDerivedStateFromError(error) {
+    console.log("发生错误了");
+    return {
+      hasError: true,
+    };
+  }
+
+  componentDidCatch(error, info) {
+    console.log("记录错误信息");
+  }
+  render() {
+    if (this.state.hasError) {
+      return <h1>发生错误了！</h1>;
+    }
+    return this.props.children;
+  }
+}
+```
+
+# React 中的事件
+
+这里的事件：React 内置的 DOM 组件中的事件
+
+1. 给 document 注册事件
+2. 几乎所有的元素的事件处理，均在 document 的事件中处理
+   1. 一些不冒泡的事件，是直接在元素上监听
+   2. 一些 document 上面没有的事件，直接在元素上监听
+3. 在 document 的事件处理，React 会根据虚拟 DOM 树的完成事件函数的调用
+4. React 的事件参数，并非真实的 DOM 事件参数，是 React 合成的一个对象，该对象类似于真实 DOM 的事件参数
+   1. stopPropagation，阻止事件在虚拟 DOM 树中冒泡
+   2. nativeEvent，可以得到真实的 DOM 事件对象
+   3. 为了提高执行效率，React 使用事件对象池来处理事件对象 （React 17 不在使用事件池）
+
+**注意事项**
+
+1. 如果给真实的 DOM 注册事件，阻止了事件冒泡，则会导致 react 的相应事件无法触发
+2. 如果给真实的 DOM 注册事件，事件会先于 React 事件运行
+3. 通过 React 的事件中阻止事件冒泡，无法阻止真实的 DOM 事件冒泡
+4. 可以通过 nativeEvent.stopImmediatePropagation()，阻止 document 上剩余事件的执行
+5. 在事件处理程序中，不要异步的使用事件对象，如果一定要使用，需要调用 persist 函数
+
+
