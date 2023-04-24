@@ -3,7 +3,7 @@
  * @Date: 2021-10-08 09:26:45
  * @LastEditTime: 2021-10-08 09:46:54
  * @LastEditors: 钱巍
- * @Description: 
+ * @Description:
  * @FilePath: \chat_webe:\learn\docs\page\vue3\ReactivityApi.md
  * 没有理想，何必远方。
 -->
@@ -12,12 +12,12 @@
 
 ## 获取响应式数据
 
-| API        | 传入                      | 返回             | 备注                                                         |
-| :--------- | ------------------------- | ---------------- | ------------------------------------------------------------ |
-| `reactive` | `plain-object`            | `对象代理`       | 深度代理对象中的所有成员                                     |
-| `readonly` | `plain-object` or `proxy` | `对象代理`       | 只能读取代理对象中的成员，不可修改                           |
-| `ref`      | `any`                     | `{ value: ... }` | 对value的访问是响应式的<br />如果给value的值是一个对象，<br />则会通过`reactive`函数进行代理<br />如果已经是代理，则直接使用代理 |
-| `computed` | `function`                | `{ value: ... }` | 当读取value值时，<br />会**根据情况**决定是否要运行函数 <br /> 和组件的computed很像 有缓存 当里面的响应式数据有变化 执行才会运行函数 或者直接返回 缓存结果      |
+| API        | 传入                      | 返回             | 备注                                                                                                                                                           |
+| :--------- | ------------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `reactive` | `plain-object`            | `对象代理`       | 深度代理对象中的所有成员                                                                                                                                       |
+| `readonly` | `plain-object` or `proxy` | `对象代理`       | 返回一个原值的只读代理，不可修改。接受一个对象 (不论是响应式还是普通的) 或是一个 ref。                                                                                                                             |
+| `ref`      | `any`                     | `{ value: ... }` | 对 value 的访问是响应式的<br />如果给 value 的值是一个对象，<br />则会通过`reactive`函数进行代理<br />如果已经是代理，则直接使用代理                           |
+| `computed` | `function`                | `{ value: ... }` | 当读取 value 值时，<br />会**根据情况**决定是否要运行函数 <br /> 和组件的 computed 很像 有缓存 当里面的响应式数据有变化 执行才会运行函数 或者直接返回 缓存结果 |
 
 应用：
 
@@ -26,7 +26,58 @@
 - 如果想要让一个非对象数据变为响应式数据，使用`ref`
 - 如果想要根据已知的响应式数据得到一个新的响应式数据，使用`computed`
 
-笔试题1：下面的代码输出结果是什么？
+**`注意:`**
+
+- 响应式转换是“深层”的：它会影响到所有嵌套的属性。一个响应式对象也将深层地**解包任何 ref 属性**，同时保持响应性。
+- 将一个 ref 赋值给为一个 reactive 属性时，该 ref 会被自动解包
+- 值得注意的是，当访问到某个响应式**数组**或 **Map** 这样的**原生集合类型中**的 ref 元素时，**不会执行 ref 的解包**。
+- 若要避免深层响应式转换，只想保留对这个对象顶层次访问的响应性，请使用 shallowReactive() 作替代。
+
+```js
+// 注意1
+const count = ref(1);
+const obj = reactive({ count });
+// ref 会被解包
+console.log(obj.count === count.value); // true
+// 会更新 `obj.count`
+count.value++;
+console.log(count.value); // 2
+console.log(obj.count); // 2
+// 也会更新 `count` ref
+obj.count++;
+console.log(obj.count); // 3
+console.log(count.value); // 3
+
+// 注意2
+const count = ref(1);
+const obj = reactive({});
+obj.count = count;
+console.log(obj.count); // 1
+console.log(obj.count === count.value); // true
+
+// 注意3
+const books = reactive([ref("Vue 3 Guide")]);
+// 这里需要 .value  不会解包
+console.log(books[0].value);
+const map = reactive(new Map([["count", ref(0)]]));
+// 这里需要 .value  不会解包
+console.log(map.get("count").value);
+
+// 注意4
+const count = ref(1);
+const obj = shallowReactive({
+  a: {
+    b: {
+      c: {},
+    },
+  },
+});
+obj.count = count;
+console.log(obj.count); // 1
+console.log(obj.count === count.value); // true
+```
+
+笔试题 1：下面的代码输出结果是什么？
 
 ```js
 import { reactive, readonly, ref, computed } from "vue";
@@ -57,35 +108,32 @@ console.log("fullname is", fullName.value);
 
 const imState2 = readonly(stateRef);
 console.log(imState2.value === stateRef.value);
-
 ```
 
-笔试题2：按照下面的要求完成函数
+笔试题 2：按照下面的要求完成函数
 
 ```js
-function useUser(){
+function useUser() {
   // 在这里补全函数
   return {
     user, // 这是一个只读的用户对象，响应式数据，默认为一个空对象
     setUserName, // 这是一个函数，传入用户姓名，用于修改用户的名称
     setUserAge, // 这是一个函数，传入用户年龄，用户修改用户的年龄
-  }
+  };
 }
 ```
 
-笔试题3：按照下面的要求完成函数
+笔试题 3：按照下面的要求完成函数
 
 ```js
-function useDebounce(obj, duration){
+function useDebounce(obj, duration) {
   // 在这里补全函数
   return {
     value, // 这里是一个只读对象，响应式数据，默认值为参数值
-    setValue // 这里是一个函数，传入一个新的对象，需要把新对象中的属性混合到原始对象中，混合操作需要在duration的时间中防抖
-  }
+    setValue, // 这里是一个函数，传入一个新的对象，需要把新对象中的属性混合到原始对象中，混合操作需要在duration的时间中防抖
+  };
 }
 ```
-
-
 
 # 监听数据变化
 
@@ -94,7 +142,7 @@ function useDebounce(obj, duration){
 ```js
 const stop = watchEffect(() => {
   // 该函数会立即执行，然后追中函数中用到的响应式数据，响应式数据变化后会再次执行
-})
+});
 
 // 通过调用stop函数，会停止监听
 stop(); // 停止监听
@@ -106,15 +154,23 @@ stop(); // 停止监听
 // 等效于vue2的$watch
 
 // 监听单个数据的变化
-const state = reactive({ count: 0 })
-watch(() => state.count, (newValue, oldValue) => {
-  // ...
-}, options)
+const state = reactive({ count: 0 });
+watch(
+  () => state.count,
+  (newValue, oldValue) => {
+    // ...
+  },
+  options
+);
 
 const countRef = ref(0);
-watch(countRef, (newValue, oldValue) => {
-  // ...
-}, options)
+watch(
+  countRef,
+  (newValue, oldValue) => {
+    // ...
+  },
+  options
+);
 
 // 监听多个数据的变化
 watch([() => state.count, countRef], ([new1, new2], [old1, old2]) => {
@@ -156,21 +212,16 @@ state.count++;
 state.count++;
 
 console.log("end");
-
 ```
-
-
 
 # 判断
 
-| API          | 含义                                                         |
-| ------------ | ------------------------------------------------------------ |
-| `isProxy`    | 判断某个数据是否是由`reactive`或`readonly`                   |
+| API          | 含义                                                                                                       |
+| ------------ | ---------------------------------------------------------------------------------------------------------- |
+| `isProxy`    | 判断某个数据是否是由`reactive`或`readonly`                                                                 |
 | `isReactive` | 判断某个数据是否是通过`reactive`创建的<br />详细:https://v3.vuejs.org/api/basic-reactivity.html#isreactive |
-| `isReadonly` | 判断某个数据是否是通过`readonly`创建的                       |
-| `isRef`      | 判断某个数据是否是一个`ref`对象                              |
-
-
+| `isReadonly` | 判断某个数据是否是通过`readonly`创建的                                                                     |
+| `isRef`      | 判断某个数据是否是一个`ref`对象                                                                            |
 
 # 转换
 
@@ -181,44 +232,42 @@ console.log("end");
 应用：
 
 ```js
-function useNewTodo(todos){
+function useNewTodo(todos) {
   todos = unref(todos);
   // ...
 }
 ```
 
-
-
 **toRef**
 
-得到一个响应式对象某个属性的ref格式
+得到一个响应式对象某个属性的 ref 格式
 
 ```js
 const state = reactive({
   foo: 1,
-  bar: 2
-})
+  bar: 2,
+});
 
-const fooRef = toRef(state, 'foo'); // fooRef: {value: ...}
+const fooRef = toRef(state, "foo"); // fooRef: {value: ...}
 
-fooRef.value++
-console.log(state.foo) // 2
+fooRef.value++;
+console.log(state.foo); // 2
 
-state.foo++
-console.log(fooRef.value) // 3
+state.foo++;
+console.log(fooRef.value); // 3
 ```
 
 **toRefs**
 
-把一个响应式对象的所有属性转换为ref格式，然后包装到一个`plain-object`中返回
+把一个响应式对象的所有属性转换为 ref 格式，然后包装到一个`plain-object`中返回
 
 ```js
 const state = reactive({
   foo: 1,
-  bar: 2
-})
+  bar: 2,
+});
 
-const stateAsRefs = toRefs(state)
+const stateAsRefs = toRefs(state);
 /*
 stateAsRefs: not a proxy
 {
@@ -292,4 +341,3 @@ setup(){
   }
 }
 ```
-
