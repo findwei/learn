@@ -824,9 +824,9 @@ export default function App() {
 import React, { useState, useRef, useEffect } from 'react'
 export default function App() {
     const [n, setN] = useState(10)
-    const nRef = useRef(n); // {current:10} z
+    const nRef = useRef(n); // {current:10}   这里不适用ref也行 let nC = n  这里只是需要一个变量  但是使用ref是最好每次都是同一个引用地址
     // 这里需要使用ref 为什么不能直接用n 因为在useEffect第一次执行得时候拿到得n 是10  setN执行后 重新执行app组件 是一个新得作用域了 定时器里面得n一直是第一次得值 10
-    useEffect(() => {
+    useEffect(() => { //这里没有依赖性只在第一次运行时执行，所以里面拿到的作用域 也是第一次的
         const timer = setInterval(() => {
             nRef.current--;
             setN(nRef.current);
@@ -853,8 +853,8 @@ export function App1() {
     useEffect(() => {
         console.log('useEffect')
         const timer = setInterval(() => {
-            console.log(n) //10 拿到得是第一次加载得n 一直是用得这个n 
-            setN(n - 1)  //修改后 重新执行app1 是一个新得作用域了 所哟下次执行 这里得n还是10 所以相当于一直在设置 setN(9)
+            console.log(n) //10 拿到得是第一次加载得n 一直是用得这个n
+            setN(n - 1)  //修改后 重新执行app1 是一个新得作用域了 所以定时器下次执行 还是用的第一次的作用域 这里得n还是10 所以相当于一直在设置 setN(9)
             if (n === 0) { //n永远等于10 定时器不可能进入这里面
                 clearInterval(timer);
             }
@@ -870,6 +870,44 @@ export function App1() {
     )
 }
 ```
+
 # ImperativeHandle Hook
 
-函数：useImperativeHandleHook
+函数：`useImperativeHandleHook(ref, createHandle, dependencies?)`
+
+向父组件暴露一个自定义的 ref 句柄
+
+- ref：该 ref 是你从 forwardRef 渲染函数 中获得的第二个参数。
+- createHandle：该函数无需参数，它返回你想要暴露的 ref 的句柄。该句柄可以包含任何类型。通常，你会返回一个包含你想暴露的方法的对象。
+- 可选的 dependencies：函数 createHandle 代码中所用到的所有反应式的值的列表。反应式的值包含 props、状态和其他所有直接在你组件体内声明的变量和函数。倘若你的代码检查器已 为 React 配置好，它会验证每一个反应式的值是否被正确指定为依赖项。该列表的长度必须是一个常数项，并且必须按照 [dep1, dep2, dep3] 的形式罗列各依赖项。React 会使用 Object.is 来比较每一个依赖项与其对应的之前值。如果一次重新渲染导致某些依赖项发生了改变，或你没有提供这个参数列表，你的函数 createHandle 将会被重新执行，而新生成的句柄则会被分配给 ref。
+
+```tsx
+import { forwardRef, useImperativeHandle } from "react";
+const MyInput = forwardRef(function MyInput(props, ref) {
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        // 这里写你要暴露给父组件东西
+      };
+    },
+    []
+  );
+
+  return <input {...props} />;
+});
+```
+
+# LayoutEffect Hook
+
+useEffect：浏览器渲染完成后，用户看到新的渲染结果之后 执行
+useLayoutEffectHook：完成了虚拟DOM改动，但还没有呈现给用户 执行
+
+应该尽量使用useEffect，因为它不会导致渲染阻塞，如果出现了问题，再考虑使用useLayoutEffectHook
+
+# DebugValue Hook
+
+useDebugValue：用于将自定义Hook的关联数据显示到调试栏
+
+如果创建的自定义Hook通用性比较高，可以选择使用useDebugValue方便调试
+
