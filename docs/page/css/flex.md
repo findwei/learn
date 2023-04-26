@@ -4,6 +4,8 @@ flex 布局后 一边固定 width 一边自动 width 自动宽如果在使用文
 
 需要给自动宽box设置 `whith:0px`
 
+![ellipsis](./img/1682480875346.jpg)
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
