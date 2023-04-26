@@ -12,7 +12,7 @@ body * {
 }
 
 a, button, input {
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 button, input {
@@ -53,7 +53,7 @@ h3, h4, p {
 }
 
 .clearfix:after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
@@ -75,7 +75,7 @@ h3, h4, p {
 }
 
 #header a:nth-of-type(1)::after {
-  content: '';
+  content: "";
   display: inline-block;
   width: 25px;
   height: 14px;
@@ -107,7 +107,7 @@ h3, h4, p {
 }
 
 #header a:nth-of-type(2)::before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 26px;
   height: 26px;
@@ -128,7 +128,7 @@ h3, h4, p {
 /* nav */
 #nav ul {
   font-size: 0;
-  padding: 0.42667rem 0;
+  padding: 0.4266666667rem 0;
   background: #f2f0f0;
 }
 
@@ -136,11 +136,11 @@ h3, h4, p {
   width: 25%;
   display: inline-block;
   text-align: center;
-  margin: 0.42667rem 0;
+  margin: 0.4266666667rem 0;
 }
 
 #nav li a {
-  font-size: 0.59733rem;
+  font-size: 0.5973333333rem;
   color: #525252;
 }
 
@@ -148,7 +148,7 @@ h3, h4, p {
   width: 1.6rem;
   height: 1.6rem;
   display: block;
-  margin: 0 auto 0.21333rem auto;
+  margin: 0 auto 0.2133333333rem auto;
 }
 
 /* ad1 */
@@ -157,8 +157,8 @@ h3, h4, p {
 }
 
 #ad1 a img {
-  width: 5.33333rem;
-  height: 5.33333rem;
+  width: 5.3333333333rem;
+  height: 5.3333333333rem;
 }
 
 /* ad2 */
@@ -173,22 +173,22 @@ h3, h4, p {
 
 /* list */
 #list h3 {
-  font-size: 0.68267rem;
-  line-height: 1.70667rem;
+  font-size: 0.6826666667rem;
+  line-height: 1.7066666667rem;
   color: #131313;
   font-weight: normal;
-  padding-left: 0.42667rem;
+  padding-left: 0.4266666667rem;
   border-bottom: 1px solid #d2d1d4;
 }
 
 #list h3::before {
-  content: '';
+  content: "";
   display: inline-block;
-  width: 0.17067rem;
-  height: 0.68267rem;
+  width: 0.1706666667rem;
+  height: 0.6826666667rem;
   background: #cc0530;
-  border-radius: 0.10667rem;
-  margin-right: 0.42667rem;
+  border-radius: 0.1066666667rem;
+  margin-right: 0.4266666667rem;
   vertical-align: middle;
 }
 
@@ -201,7 +201,7 @@ h3, h4, p {
 }
 
 #list article a {
-  padding: 0.42667rem;
+  padding: 0.4266666667rem;
   display: flex;
 }
 
@@ -211,8 +211,8 @@ h3, h4, p {
 }
 
 #list article .img img {
-  width: 4.56533rem;
-  height: 4.13867rem;
+  width: 4.5653333333rem;
+  height: 4.1386666667rem;
 }
 
 #list article .text {
@@ -220,28 +220,27 @@ h3, h4, p {
 }
 
 #list article .text h4 {
-  font-size: 0.59733rem;
+  font-size: 0.5973333333rem;
   color: #181818;
-  line-height: 1.30133rem;
-  margin-bottom: 0.10667rem;
+  line-height: 1.3013333333rem;
+  margin-bottom: 0.1066666667rem;
 }
 
 #list article .text p {
   font-size: 0.512rem;
   color: #979797;
   line-height: 0.768rem;
-  margin-bottom: 0.40533rem;
+  margin-bottom: 0.4053333333rem;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  -webkit-line-clamp: 2;
-  /* 设置文本显示的行数 */
+  -webkit-line-clamp: 2; /* 设置文本显示的行数 */
 }
 
 #list article .text div {
   font-size: 0.512rem;
-  height: 0.72533rem;
-  line-height: 0.72533rem;
+  height: 0.7253333333rem;
+  line-height: 0.7253333333rem;
   color: #525252;
 }
 
@@ -266,6 +265,6 @@ h3, h4, p {
 .text .red {
   float: right;
   background: url(../images/ico_05.png) no-repeat left 0.064rem;
-  background-size: 0.512rem 0.46933rem;
-  padding-left: 0.59733rem;
-}
+  background-size: 0.512rem 0.4693333333rem;
+  padding-left: 0.5973333333rem;
+}/*# sourceMappingURL=index.css.map */

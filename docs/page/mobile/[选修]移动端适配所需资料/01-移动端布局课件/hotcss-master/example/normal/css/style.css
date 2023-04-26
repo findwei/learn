@@ -1,7 +1,8 @@
 body {
   width: 16rem;
   margin: 0 auto;
-  padding: 0; }
+  padding: 0;
+}
 
 #header {
   width: 16rem;
@@ -10,7 +11,8 @@ body {
   background-color: #33aa33;
   text-align: center;
   font-size: 1.2rem;
-  color: white; }
+  color: rgb(255, 255, 255);
+}
 
 #container1 {
   margin-top: 0.25rem;
@@ -19,7 +21,8 @@ body {
   color: #f0f0f0;
   line-height: 1.7;
   max-height: 100%;
-  font-size: 0.8rem; }
+  font-size: 0.8rem;
+}
 
 #container2 {
   margin-top: 0.25rem;
@@ -28,8 +31,11 @@ body {
   color: #f0f0f0;
   line-height: 1.7;
   max-height: 100%;
-  font-size: 12px; }
-  [data-dpr="2"] #container2 {
-    font-size: 24px; }
-  [data-dpr="3"] #container2 {
-    font-size: 36px; }
+  font-size: 12px;
+}
+[data-dpr="2"] #container2 {
+  font-size: 24px;
+}
+[data-dpr="3"] #container2 {
+  font-size: 36px;
+}/*# sourceMappingURL=style.css.map */
