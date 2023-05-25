@@ -6,7 +6,7 @@ const remoteFilePath = '/www/wwwroot/webber';
 const remoteHost = 'admin.webber.run';
 const remotePort = 21;
 const remoteUsername = 'webber';
-const remotePassword = 'pK5sfbmijfN7tnEx';
+const remotePassword = '';
 
 const conn = new Client();
 conn.on('ready', function () {
