@@ -15,5 +15,9 @@
     "url": "git@gitee.com:ccl0108/learn.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "ftp": "^0.3.10",
+    "ssh2": "^1.13.0"
+  }
 }
