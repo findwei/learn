@@ -193,6 +193,8 @@ frig.join(new Elephant());
 
 # 类：构造函数的语法糖
 
+[参考阮一峰写的class](https://es6.ruanyifeng.com/#docs/class)
+
 ## 传统的构造函数的问题
 
 1. 属性和原型方法定义分离，降低了可读性

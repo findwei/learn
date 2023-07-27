@@ -1,4 +1,4 @@
-#
+# 目录
 
 [toc]
 
@@ -218,7 +218,7 @@ export default class App extends React.Component {
 
 React 中的上下文特点：
 
-1. 当某个组件创建了上下文后，上下文中的数据，会被所有后代组件共享
+1. 当某个组件创建了上下文后，上下文中的数据，会被**所有后代组件**共享
 2. 如果某个组件依赖了上下文，会导致该组件不再纯粹（纯粹的组件外部数据仅来源于属性 props）
 3. 一般情况下，用于第三方组件（通用组件）
 
@@ -231,7 +231,7 @@ React 中的上下文特点：
 只有类组件才可以创建上下文
 
 1. 给类组件书写静态属性 childContextTypes，使用该属性对上下文中的数据类型进行约束
-2. 添加实例方法 getChildContext，该方法返回的对象，即为上下文中的数据，该数据必须满足类型约束，该方法会在每次 render 之后运行。
+2. 添加实例方法 getChildContext，**该方法返回的对象，即为上下文中的数据**，该数据必须满足类型约束，该方法会在每次 render 之后运行。
 
 **使用上下文中的数据**
 
@@ -349,7 +349,7 @@ export default class OldContext extends Component {
 
 1. Provider 属性：生产者。一个组件，该组件会创建一个上下文，该组件有一个 value 属性，通过该属性，可以为其数据赋值
    1. 同一个 Provider，不要用到多个组件中，如果需要在其他组件中使用该数据，应该考虑将数据提升到更高的层次
-2. Consumer 属性：后续讲解
+2. Consumer 属性：见下面
 
 **使用上下文中的数据**
 
@@ -464,7 +464,7 @@ class Greeting extends React.PureComponent {
     return <h1>Hello, {this.props.name}</h1>;
   }
 }
-// 函数组件
+// 函数组件使用
 function MyComponent(props) {
   /* 使用 props 渲染 */
 }

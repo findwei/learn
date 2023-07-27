@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function* createGenetator() {
+            console.log('生成器函数的函数体1')
+            let result = yield 1
+            console.log('生成器函数的函数体2' + result)
+            result = yield 2
+            console.log('生成器函数的函数体3' + result)
+            result = yield 3
+            console.log('生成器函数的函数体4' + result)
+        }
+        const generator = createGenetator()
+    </script>
+</body>
+
+</html>

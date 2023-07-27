@@ -11,5 +11,9 @@
 
 > webberQian 笔记
 
+# 全局安装 docsify-cli
+
+> npm i docsify-cli -g
+
 # serve
 > docsify serve docs --port 4000

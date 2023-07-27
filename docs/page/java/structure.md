@@ -8,7 +8,7 @@
 
 1. 基本数据类型 （8个）
 
-   - 4 整型 (byte short int long)
+   - 1 整型 (byte short int long)
      
      > byte (8bit) 1字节
      >
@@ -57,7 +57,7 @@
 
         > boolean (1bit)  1/8字节 
 
-3. 引用类型（没有个数 因为可以自定义 下面几个常用的）
+2. 引用类型（没有个数 因为可以自定义 下面几个常用的）
     - 数组[]
     - 类class (抽象类abstract class)
     - 接口 interface
