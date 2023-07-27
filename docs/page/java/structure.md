@@ -148,7 +148,7 @@
    //5.我们写好的指令  执行内存的空间  赋值  变化。。。。看下图
    ```
    
-   ![基础原理图](./img/源码编译执行内存空间问题.jpg)
+   ![基础原理图](https://raw.githubusercontent.com/findwei/learnImages/main/java/源码编译执行内存空间问题.jpg)
    
    ​	
    
@@ -272,7 +272,7 @@ int a = 1
 
 
 
-![变量赋值与运算解析](./img/blfzysjx.png)
+![变量赋值与运算解析](https://raw.githubusercontent.com/findwei/learnImages/main/java/blfzysjx.png)
 
 - 赋值运算 `=`  赋值符号  将`=`右边的内容(值 引用) 存入=左边的变量空间内 `+=    -=    *=    /=    %=`
 
