@@ -10,11 +10,11 @@
 
 webpack 原理图
 
-<img src="page/vue3/img/20200929144416.png" alt="image-20200929144416064" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/findwei/learnImages/main/vue3/20200929144416.png" alt="image-20200929144416064" style="zoom:50%;" />
 
 vite 原理图
 
-<img src="page/vue3/img/20200929144957.png" alt="image-20200929144957808" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/findwei/learnImages/main/vue3/20200929144957.png" alt="image-20200929144957808" style="zoom:50%;" />
 
 > 面试题答案：
 >
@@ -105,9 +105,9 @@ function render(){
 const _hoisted_2 = _createStaticVNode("<div class=\"logo\"><h1>logo</h1></div><ul class=\"nav\"><li><a href=\"\">menu</a></li><li><a href=\"\">menu</a></li><li><a href=\"\">menu</a></li><li><a href=\"\">menu</a></li><li><a href=\"\">menu</a></li></ul>")
 ```
 
-<img src="page/vue3/img/20200929170205.png" alt="image-20200929170205828" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/findwei/learnImages/main/vue3/20200929170205.png" alt="image-20200929170205828" style="zoom:50%;" />
 
-<img src="page/vue3/img/20200929170304.png" alt="image-20200929170304873" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/findwei/learnImages/main/vue3/20200929170304.png" alt="image-20200929170304873" style="zoom:50%;" />
 
 ## 缓存事件处理函数
 
@@ -150,9 +150,9 @@ vue2在对比新旧树的时候，并不知道哪些节点是静态的，哪些�
 </form>
 ```
 
-<img src="page/vue3/img/20200929172002.png" alt="image-20200929172002761" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/findwei/learnImages/main/vue3/20200929172002.png" alt="image-20200929172002761" style="zoom:50%;" />
 
-<img src="page/vue3/img/20200929172555.png" alt="image-20200929172555681" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/findwei/learnImages/main/vue3/20200929172555.png" alt="image-20200929172555681" style="zoom:50%;" />
 
 ## PatchFlag
 
@@ -164,5 +164,5 @@ vue2在对比每一个节点时，并不知道这个节点哪些相关信息会�
 </div>
 ```
 
-<img src="page/vue3/img/20200929172805.png" alt="image-20200929172805674" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/findwei/learnImages/main/vue3/20200929172805.png" alt="image-20200929172805674" style="zoom:50%;" />
 

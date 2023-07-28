@@ -217,7 +217,7 @@ React 会对异步的 setState 进行优化，将多次 setState 进行合并（
 
 React < 16.0.0
 
-![旧版生命周期](./img/旧版生命周期.png)
+![旧版生命周期](https://raw.githubusercontent.com/findwei/learnImages/main/react/旧版生命周期.png)
 
 1. constructor
    1. 同一个组件对象只会创建一次
@@ -252,7 +252,7 @@ React < 16.0.0
 
 React >= 16.0.0
 
-![新版生命周期](./img/新版生命周期.png)
+![新版生命周期](https://raw.githubusercontent.com/findwei/learnImages/main/react/新版生命周期.png)
 
 React 官方认为，某个数据的来源必须是单一的
 

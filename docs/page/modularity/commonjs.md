@@ -3,7 +3,7 @@
 
 在nodejs中，由于有且仅有一个入口文件（启动文件），而开发一个应用肯定会涉及到多个文件配合，因此，nodejs对模块化的需求比浏览器端要大的多
 
-![](img/2019-12-02-11-15-01.png)
+![](https://raw.githubusercontent.com/findwei/learnImages/main/modularity/2019-12-02-11-15-01.png)
 
 由于nodejs刚刚发布的时候，前端没有统一的、官方的模块化规范，因此，它选择使用社区提供的CommonJS作为模块化规范
 
@@ -27,7 +27,7 @@
 
 **暴露接口的过程即模块的导出**
 
-![](img/2019-12-02-11-27-12.png)
+![](https://raw.githubusercontent.com/findwei/learnImages/main/modularity/2019-12-02-11-27-12.png)
 
 ## 模块的导入
 

@@ -8,7 +8,7 @@
 vue render实现是借鉴snabbdom
 
 **vue渲染流程:**
-   ![vue渲染](./img/vue渲染.png)
+   ![vue渲染](https://raw.githubusercontent.com/findwei/learnImages/main/vue/vue渲染.png)
   
 
 **computed、watch、methods 之间的区别**

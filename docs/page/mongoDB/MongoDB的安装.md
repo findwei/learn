@@ -44,7 +44,7 @@ sudo chown -R $(whoami) /usr/local/include /usr/local/lib /usr/local/lib/pkgconf
   - `Primary Key`：和`mysql`中的主键含义一致，每个`document`都有一个主键
   - `field`：文档中的字段
 
-![image-20200521170211855](./img/image-20200521170211855.png)
+![image-20200521170211855](https://raw.githubusercontent.com/findwei/learnImages/main/mongoDB/image-20200521170211855.png)
 
 `mongodb`属于`nosql`中的文档型数据库，每个文档相当于是一个对象，它没有列的概念，也没有表关系
 

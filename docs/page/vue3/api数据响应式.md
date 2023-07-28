@@ -60,7 +60,7 @@
 
 vue2和vue3均在相同的生命周期完成数据响应式，但做法不一样
 
-<img src="page/vue3/img/20201014155433.png" alt="image-20201014155433311" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/findwei/learnImages/main/vue3/20201014155433.png" alt="image-20201014155433311" style="zoom:50%;" />
 
 # 面试题参考答案
 
