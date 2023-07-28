@@ -23,7 +23,7 @@ const app = createApp(App).mount('#app')
 
  vue3里面this指向的是一个代理（proxy）代理的当前组件实例
 
- ![avatar](https://raw.githubusercontent.com/findwei/learnImages/main/vue3/vue3的组件实例代理.jpg)
+ ![avatar](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/vue3/vue3的组件实例代理.jpg)
 ``` javascript
 < template>
     <div > </div> 
@@ -73,8 +73,8 @@ export default {
 ```
    **vue2** 
 
-   ![avatar](https://raw.githubusercontent.com/findwei/learnImages/main/vue3/option%20api.jpeg) 
+   ![avatar](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/vue3/option%20api.jpeg) 
    
    **vue3**
    
-   ![avatar](https://raw.githubusercontent.com/findwei/learnImages/main/vue3/composition%20api.jpg)
+   ![avatar](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/vue3/composition%20api.jpg)

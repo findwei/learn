@@ -2,7 +2,7 @@
 
 1. `mongoodb`操作和`mongoose`操作对比
 
-![image-20200601150124530](https://raw.githubusercontent.com/findwei/learnImages/main/mongoDB/image-20200601150124530.png)
+![image-20200601150124530](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/mongoDB/image-20200601150124530.png)
 
 1. `mongodb`的备份与恢复
 
@@ -26,7 +26,7 @@ db.<collection>.find([filter], [projection]);
 
 查询返回的是一个游标对象，它类似于迭代器，可以在查询结果中进行迭代
 
-<img src="https://raw.githubusercontent.com/findwei/learnImages/main/mongoDB/image-20200601154340434.png" alt="image-20200601154340434" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/findwei/learnImages@main/mongoDB/image-20200601154340434.png" alt="image-20200601154340434" style="zoom:50%;" />
 
 `cursor`的成员：
 

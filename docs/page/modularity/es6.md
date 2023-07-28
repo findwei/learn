@@ -33,7 +33,7 @@ ES6中的模块导入导出分为两种：
 1. 基本导入导出
 2. 默认导入导出
 
-![](https://raw.githubusercontent.com/findwei/learnImages/main/modularity/2019-12-03-17-00-44.png)
+![](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/modularity/2019-12-03-17-00-44.png)
 
 ### 基本导出
 
@@ -74,7 +74,7 @@ import {导入的符号列表} from "模块路径"
 
 # 默认导入导出
 
-![](https://raw.githubusercontent.com/findwei/learnImages/main/modularity/2019-12-03-17-00-44-1.png)
+![](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/modularity/2019-12-03-17-00-44-1.png)
 
 ## 默认导出
 
@@ -144,4 +144,4 @@ import "模块路径"
 export {绑定的标识符} from "模块路径"
 ```
 
-![](https://raw.githubusercontent.com/findwei/learnImages/main/modularity/2019-12-04-14-33-14.png)
+![](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/modularity/2019-12-04-14-33-14.png)

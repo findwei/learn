@@ -10,7 +10,7 @@
 
 # 基础知识
 
-<!-- [基础 pdf 文档](https://raw.githubusercontent.com/findwei/learnImages/main/javascipt/js基础.pdf) -->
+<!-- [基础 pdf 文档](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/javascipt/js基础.pdf) -->
 <!-- [基础 pdf 文档](/page/javascript/img/js基础.pdf) -->
 
 <a href="/page/javascript/img/js基础.pdf" target="_blank">js基础</a>

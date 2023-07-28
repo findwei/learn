@@ -139,7 +139,7 @@ public class Test {
 
 ```
 
-![类的加载与对象的创建](https://raw.githubusercontent.com/findwei/learnImages/main/java/类的加载及对象的创建.jpg)
+![类的加载与对象的创建](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/java/类的加载及对象的创建.jpg)
 
 类中的方法
 
@@ -477,7 +477,7 @@ public class TestOverload {
 
 类里面的方法来会调用报错（StackOverflowError）
 
-![方法来回调用可能产生栈内存溢出错误](https://raw.githubusercontent.com/findwei/learnImages/main/java/方法来回调用可能产生栈内存溢出错误.jpg)
+![方法来回调用可能产生栈内存溢出错误](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/java/方法来回调用可能产生栈内存溢出错误.jpg)
 
 ## 程序块(代码块)
 
@@ -520,4 +520,4 @@ public class TestOverload {
 			Float.parseFloat("123.34");
 ```
 
-![Scanner读取问题](https://raw.githubusercontent.com/findwei/learnImages/main/java/Scanner读取问题.jpg)
+![Scanner读取问题](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/java/Scanner读取问题.jpg)

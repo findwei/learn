@@ -69,7 +69,7 @@ JS代码的数量开始逐渐增长，从最初的几百行，到后来的几万
 
 也是从此刻开始，人们认识到，JS（ES）是一门真正的语言，它依附于运行环境（运行时）（宿主程序）而执行
 
-![](https://raw.githubusercontent.com/findwei/learnImages/main/modularity/2019-11-28-15-45-47.png)
+![](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/modularity/2019-11-28-15-45-47.png)
 
 nodejs的诞生，便把JS中的最后一个问题放到了台前，即**全局变量污染和依赖混乱**问题
 

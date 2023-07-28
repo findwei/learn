@@ -1,7 +1,7 @@
 ## app的介绍
 
   分为原生app 和 webapp 和混合app
-  ![app-img](https://raw.githubusercontent.com/findwei/learnImages/main/mobile/webapp.png)
+  ![app-img](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/mobile/webapp.png)
 
 ## 移动端介绍
 

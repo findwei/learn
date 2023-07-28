@@ -98,7 +98,7 @@
 
 ​		如果变量空间**存储的是引用数据类型**  **存储的是引用(地址)**  一个**变量地址对应的值改变** 另一个**跟着改变**
 
-![基本类型&引用类型内存区别](https://raw.githubusercontent.com/findwei/learnImages/main/java/基本类型&引用类型内存区别.jpg)
+![基本类型&引用类型内存区别](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/java/基本类型&引用类型内存区别.jpg)
 
 # 数组练习案例
 
@@ -406,7 +406,7 @@ public class Test8{
 }
 ```
 
-![冒泡排序](https://raw.githubusercontent.com/findwei/learnImages/main/java/冒泡排序算法.jpg)
+![冒泡排序](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/java/冒泡排序算法.jpg)
 
 ```java
 public class Test9{
@@ -465,7 +465,7 @@ public class Test9{
 
 二维数组内存结构
 
-![二维数组内存结构](https://raw.githubusercontent.com/findwei/learnImages/main/java/二维数组内存结构.jpg)
+![二维数组内存结构](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/java/二维数组内存结构.jpg)
 
 ## 案例
 
@@ -497,7 +497,7 @@ public class ChangeGroup{
 	}
 }
 ```
-![二维数组交换小练习](https://raw.githubusercontent.com/findwei/learnImages/main/java/二维数组交换小练习.jpg)
+![二维数组交换小练习](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/java/二维数组交换小练习.jpg)
 
 ```java
 public class TestArray{
@@ -552,7 +552,7 @@ public class TestArray{
 }
 ```
 
-![二维数组笔试题](https://raw.githubusercontent.com/findwei/learnImages/main/java/二维数组笔试题.jpg)
+![二维数组笔试题](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/java/二维数组笔试题.jpg)
 
 
 

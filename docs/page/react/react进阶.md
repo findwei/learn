@@ -750,7 +750,7 @@ export default class ErrorBound extends PureComponent {
         - React 数组节点：该节点由一个数组创建
 3. 真实DOM：通过document.createElement创建的dom元素
 
-![](https://raw.githubusercontent.com/findwei/learnImages/main/react/2019-07-25-13-51-08.png)
+![](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/react/2019-07-25-13-51-08.png)
 
 ## 首次渲染(新节点渲染)
 
@@ -785,7 +785,7 @@ ReactDOM.render(app, document.getElementById('root'));
 
 以上代码生成的虚拟DOM树：
 
-![](https://raw.githubusercontent.com/findwei/learnImages/main/react/2019-07-25-14-17-04.png)
+![](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/react/2019-07-25-14-17-04.png)
 
 
 ```js
@@ -808,7 +808,7 @@ ReactDOM.render(app, document.getElementById('root'));
 
 以上代码生成的虚拟DOM树：
 
-![](https://raw.githubusercontent.com/findwei/learnImages/main/react/2019-07-25-14-49-53.png)
+![](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/react/2019-07-25-14-49-53.png)
 
 
 ```js
@@ -836,7 +836,7 @@ ReactDOM.render(app, document.getElementById('root'));
 
 以上代码生成的虚拟DOM树：
 
-![](https://raw.githubusercontent.com/findwei/learnImages/main/react/2019-07-25-14-56-35.png)
+![](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/react/2019-07-25-14-56-35.png)
 
 
 
