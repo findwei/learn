@@ -10,7 +10,7 @@
 
 # 基础知识
 
-[基础 pdf 文档](./img/js%E5%9F%BA%E7%A1%80.pdf)
+[基础 pdf 文档](https://raw.githubusercontent.com/findwei/learnImages/main/javascipt/js基础.pdf)
 
 # this
 
