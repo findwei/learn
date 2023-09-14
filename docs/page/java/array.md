@@ -37,7 +37,7 @@
 
 ​			int[] array = new int[]{10,20,30};
 
-​		动态初始化     有长度  没有元素(不是真的没有 默认值)
+​		动态初始化     有长度  没有元素(**不是真的没有,其实里面有默认值**)
 
 ​			int[] array = new int[5];
 
@@ -128,7 +128,7 @@ public class TestArray{
 		int a = 10;
 		int b = a;
 		b = 100;
-		System.out.println(a);//?  10
+		System.out.println(a);//  10
 		
 		//引用类型
 		int[] x = new int[]{10,20,30};

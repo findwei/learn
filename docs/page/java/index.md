@@ -32,7 +32,7 @@
 
 ## 跨平台机制 - 环境搭建
 
-- JVM java virtual machine 虚拟机 (内存中开辟一块空间 源文件 =>jvm编译 =》字节码)
+- JVM java virtual machine 虚拟机 (内存中开辟一块空间 源文件 =>jvm编译 =>字节码)
 
     java计算机高级编程语言
     

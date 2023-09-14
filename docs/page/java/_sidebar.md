@@ -4,3 +4,4 @@
   - [java基本语法](page/java/baseCadre.md)
   - [java array](page/java/array.md)
   - [java 类](page/java/object.md)
+  - [java 类进阶](page/java/objectAdvance.md)
