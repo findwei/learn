@@ -3,6 +3,13 @@
 
 # 类的关系与继承
 
+  >   **tips小知识**<br/>
+  > 	类的个数变多啦--->需要管理类--->包package(可以理解为是一个文件夹)<br/>
+  >		在当前包下面的类 第一行会出现package关键字 后面连接包名<br/>
+  >		如果package和import同时出现<br/>
+  >		先写package后写import<br/>
+  >		package只能有一个  import可以有多个<br/>
+
 ## 类和类之间的关系
 
     A is-a  B  =>  泛化(继承   实现)例如：人是动物,人和动物是继承的关系 
@@ -56,6 +63,8 @@
 
 **小细节知识点补充**
 
+**Object类没有父类**
+
 Object类中的方法
 
   - hashCode() 将对象在内存中的地址经过计算得到一个int整数 (public native int hashCode()=>native修饰符表明该方法是本机方法（用Java以外的语言实现）)
@@ -87,6 +96,172 @@ Object类中的方法
   - clone()	权限修饰符是protected  为了克隆对象
 
 
+## has-a 包含关系(组合 聚合 关联) 
+
+从Java程序来描述这样的关系  通过一个类的对象当做另一个类的属性来存储
+
+组合 聚合 关联从亲密程度来讲不太一样
+
+- 组合-->人和大脑   人和心脏的关系
+  
+  整体和部分的关系 不可分割  要出现都出现  要消亡都消亡
+
+- 聚合-->汽车和车轮子    电脑和主板
+	
+  整体和部分的关系  创建时有可能是分开的
+
+- 关联-->人有汽车   人有电脑
+	
+  整体和部分的关系  可以分割  后来形成在一起
+
+```java
+// 
+public class Car {
+
+    //属性
+    public String brand;//汽车品牌
+    public String type;//型号
+    public String color;//颜色
+    public Wheel wheel;//车里面有一个轮子--->包含关系
+
+    //构造方法
+    public Car(){}
+    public Car(String brand,String type,String color,Wheel wheel){
+        this.brand=brand;
+        this.type=type;
+        this.color=color;
+        this.wheel=wheel;
+    }
+    //方法
+    public void showCar(){
+        System.out.println("这是一辆"+brand+"牌"+type+"型号"+color+"的小汽车");
+        System.out.println("车上搭载着"+wheel.brand+"牌的"+wheel.size+"尺寸"+wheel.color+"颜色的车轮子");
+        wheel.turn();//方法一定对象调用的  车轮子的方法肯定是车轮子对象调用   可以放置在任何地方
+    }
+}
+
+public class Wheel {
+
+    //属性
+    public String brand;//品牌
+    public int size;//尺寸
+    public String color;//颜色
+
+    //构造方法
+    public Wheel(){}
+    public Wheel(String brand,int size,String color){
+        this.brand = brand;
+        this.size = size;
+        this.color = color;
+    }
+
+    //方法
+    public void turn(){
+        System.out.println("车轮子可以旋转");
+    }
+}
+// 使用是 将轮子传进去形成组合 
+public class Test {
+
+    public static void main(String[] args){
+        Car car = new Car("宝马","Z4","宝石蓝色",new Wheel("米其林",400,"酷黑"));
+        car.showCar();//展示汽车
+    }
+}
 
 
+```
+      
+## use-a(need-a)	依赖关系
+
+屠夫  杀  猪		农夫 养 猪
+
+一个类屠夫
+
+  可以做一件事情  杀猪
+  需要一头猪
+
+不是整体和部分的关系 某一件事情产生了关系 临时组合在一起 这件事情一旦做完关系即解散
+
+Java程序体现的形式为:
+
+一个类的方法中使用到了另一个类的对象
+
+  第一个可以在方法中传递参数
+
+  第二个可以在方法中自己创建
+
+```java
+public class Farmer {//农夫
+
+    //农夫养猪--->
+    //    参数--->几个月    返回值-->是一头猪
+    public Pig feedPig(int month){
+        Pig pig = new Pig("小花");//依赖--->在屠夫的方法中使用到了猪的对象
+        pig.growUp(month);//20 --> 640
+        return pig;
+    }
+}
+
+public class Butcher {//描述屠夫
+
+    //方法
+    //描述一个屠夫杀猪的方法   需要提供条件 一头猪
+    public void killPig(Pig pig){
+        System.out.println("屠夫执行了杀猪方法");
+        String pigName = pig.getName();
+        int pigWeight = pig.getWeight();
+        System.out.println(pigName+"的体重为:"+pigWeight);
+        pig.beKilled();
+    }
+}
+
+public class Pig {//描述猪
+
+    //属性
+    private String name;//名字
+    private int weight = 20;//体重
+
+    //构造方法
+    public Pig(){}
+    public Pig(String name){
+        this.name=name;
+    }
+    //方法
+    //描述一个方法  表示小猪被杀啦
+    public void beKilled(){
+        System.out.println(this.name+"被杀啦，好惨呀");
+    }
+
+    //描述一个方法  让猪长肉
+    //    每一个月涨到前一个月的两倍
+    public void growUp(int month){
+        for(int i=1;i<=month;i++){
+            this.weight*=2;
+        }
+    }
+
+    //描述一个方法  猪告知他的体重
+    public int getWeight(){
+        return this.weight;
+    }
+    public String getName(){
+        return this.name;
+    }
+}
+
+public class Test {
+    public static void main(String[] args){
+        //创建农夫对象
+        Farmer farmer = new Farmer();
+        //农夫做一件事情--->养猪
+        Pig pig = farmer.feedPig(5);
+        //创建屠夫对象
+        Butcher butcher = new Butcher();
+        //屠夫做事--->杀猪 把猪传进去
+        butcher.killPig(pig);
+    }
+}
+
+```
 
