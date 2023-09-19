@@ -123,7 +123,7 @@ public class Cs {
 
         通常都是一些定义好的工具类 例如：`Math`   `Scanner`   `Integer`   `String`
 
-2. static静态的
+2. static  静态的
    
     ![继承在内存中的存储形式](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/java/objectAdvance/内存结构简图.png)
 
@@ -138,7 +138,7 @@ public class Cs {
 		3. 静态元素`只加载一次`(只有一份)，同一个类模板的`类对象及类本身共享`
 		4. 由于静态元素区加载的时候，有可能没有创建对象，可以通过`类名字直接访问`
 		5. 可以理解为静态元素不属于任何一个对象，`属于类`的
-		6. 静态元素区Garbage Collection(垃圾回收器)无法管理，可以粗暴的认为常驻内存 （tips:栈内存使用完成自己马上销毁，堆内存使用Garbage Collection(垃圾回收器)）
+		6. 静态元素区Garbage Collection(垃圾回收器)无法管理，可以粗暴的认为常驻内存 （tips:栈内存使用完成就马上销毁，堆内存使用Garbage Collection(垃圾回收器)）
 		7. 非静态成员(堆内存对象里)中可以访问静态成员(静态区)
 		8. 静态成员中可以访问静态成员(都存在静态区)
 		9.  静态成员中不可以访问非静态成员(个数 一个出发访问一堆相同名字的东西 说不清)(静态元素属于类 非静态成员属于对象自己)
