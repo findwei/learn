@@ -6,3 +6,6 @@
   - [java 类](page/java/object.md)
   - [java 类关系](page/java/objectRelationship.md)
   - [java 类修饰符](page/java/objectDecorate.md)
+  - [设计模式](page/java/designPattern/index.md)
+    - [单例模式](page/java/designPattern/singleton.md)
+  

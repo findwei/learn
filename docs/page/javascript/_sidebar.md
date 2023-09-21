@@ -7,5 +7,5 @@
  * @FilePath: \auto.javascriptd:\wei.qian\learn\docs\page\javascript\_sidebar.md
  * 没有理想，何必远方。
 -->
-- java
+- javascript
   - [基础](page/javascript/index.md)
