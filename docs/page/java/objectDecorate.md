@@ -330,7 +330,6 @@ public class Test {
     }
 }
 
-
 ```
 1. 加载父类
 2. 父类会产生自己的静态空间   属性 方法 块  
@@ -345,3 +344,131 @@ public class Test {
 11. 执行块  执行子类构造方法
 12. 将对象空间的地址引用交给 变量来存储
 
+
+## 多态
+
+同一个对象 体现出来的多种不同形态(身份)  将一种行为表现出不同的效果，要想实现多态的效果 **需要现有继承关系**。
+
+**体现:**
+
+    1.父类类型的引用  指向  子类的对象
+        Person p = new Teacher();
+    2.该引用只能调用父类中定义的属性或方法
+    3.如果子类中将父类的方法重写，那么调取方法后执行的结果是子类重写之后的那个结果
+        如果父类与子类有同名的属性  		执行父类的属性
+        如果父类与子类有同名的方法(重载)	执行子类重写之后的方法
+    4.若想要调用子类中独有的成员
+        (强制类型转化)  造型 铸型  (向上/向下转型)
+    5.造型时(强制向下转型时) 可能会出现一个运行时异常
+        ClassCastException   造型  铸型 异常
+        如果想要避免造型的异常  可以用instanceof关键字来进行判断
+        对象  instanceof  类
+
+        InputMismatchException 输入不匹配
+        NumberFormateException   数字格式化异常
+        ArrayIndexOutOfBoundsException  数组索引越界
+        NegativeArraySizeException   数组长度负数
+        NullPointerException  空指针异常
+        ArithmeticException  算数异常
+        ClassCastException   造型异常  将对象的类型还原时  与真实类型不匹配
+
+        StackOverflowError  栈内存溢出错误
+
+![singleton简图](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/java/designPattern/多态.png)
+```java
+public class Animal {
+    public String name = "Animal的name属性";
+    public void eat(){
+        System.out.println("animal的吃饭方法");
+    }
+    public void sleep(){
+        System.out.println("animal的睡觉方法");
+    }
+}
+public class Person extends Animal{
+    public String name = "person的name属性";
+    public void eat(){
+        System.out.println("person的吃饭方法");
+    }
+    public void sleep(){
+        System.out.println("人类的睡觉方法");
+    }
+    public void talk(){
+        System.out.println("人类的说话方法");
+    }
+}
+public class Pig extends Animal{
+    public String name = "pig的name属性";
+    public void sleep(){
+        System.out.println("猪的睡觉方法");
+    }
+}
+public class Teacher extends Person{
+    public String name = "teacher的name属性";
+    public void eat(){
+        System.out.println("老师的吃饭方法");
+    }
+    public void teach(){
+        System.out.println("做老师的独有方法 一般人不会讲课 我会");
+    }
+}
+public class Student extends Person {
+    public String name = "student的name属性";
+    public void talk(){
+        System.out.println("学生遵守礼貌 应该好好说话");
+    }
+    public void study(){
+        System.out.println("好好学习 天天向上");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        //这个真是的老师 体现出来的身份是一个人的身份
+        Person p = new Teacher();//自动向上转型  Teacher--->Person
+        p.eat(); //老师的吃饭方法
+        p.sleep(); //人类的睡觉方法
+        p.talk(); //人类的说话方法
+
+        //如果想要调用子类独有的属性或方法
+        //需要将类型还原会真实类型    强制类型转化  造型  向上转型  向下转型
+        Teacher t = (Teacher)p;
+        t.eat(); //老师的吃饭方法
+        t.sleep(); //人类的睡觉方法
+        t.talk(); //人类的说话方法
+        t.teach(); //做老师的独有方法 一般人不会讲课 我会
+
+       Object o = new Teacher();
+       Animal a = (Animal) o;
+       System.out.println(a.name);//animal的name属性
+       a.sleep();//person重写了 人类的睡觉方法
+       a.eat();//老师的吃饭方法
+       System.out.println("-----------------------");
+       Person p = (Person) o;
+       System.out.println(p.name);//person的name属性
+       m.sleep();//人类的睡觉方法
+       m.eat();//老师的吃饭方法
+       m.talk();//人类的说话方法
+       System.out.println("----------------------");
+       Teacher t = (Teacher) o;
+       System.out.println(t.name);//teacher的name属性
+       tt.eat();//老师的吃饭方法
+       tt.sleep();//人类的睡觉方法
+       tt.talk();//人类的说话方法
+       tt.teach();//做老师的独有方法 一般人不会讲课 我会
+       System.out.println("-------------------");
+        //    Pig b = (Pig) aa; //报错 Animal cannot be cast to class test.Pig (Animal and Pig are in unnamed module of loader 'app')
+       if (o instanceof Person) {//对象是否属于后面类型
+           System.out.println("类型匹配  可以造型");
+           // Student s = (Student)o;
+           //运行时异常 ClassCastException
+           //s.study();
+       } else {
+           System.out.println("对不起 类型不匹配 不帮您造型啦 否则会出问题");
+       }
+
+        Animal aa = new Animal();
+  
+    }
+}
+```

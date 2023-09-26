@@ -8,4 +8,5 @@
   - [类修饰符 interface 加载顺序](page/java/objectDecorate.md)
   - [设计模式](page/java/designPattern/index.md)
     - [单例模式](page/java/designPattern/singleton.md)
+    - [适配器模式](page/java/designPattern/adapter.md)
   
