@@ -9,4 +9,5 @@
   - [设计模式](page/java/designPattern/index.md)
     - [单例模式](page/java/designPattern/singleton.md)
     - [适配器模式](page/java/designPattern/adapter.md)
+    - [策略模式](page/java/designPattern/strategy.md)
   
