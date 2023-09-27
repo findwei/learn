@@ -478,39 +478,95 @@ public class Test {
     指的是在Java中可以将一个类定义在另一个类的内部
     内部类可以定义在  类的内部 (与类成员层次一致)
     内部类可以定义在  方法/块内部 (与类成员相差一个层次  方法的局部变量一个层次)
+
+*1.成员内部类
+
+    将一个类直接定义在类的里面，作为成员，与属性或方法层次一致
+    成员内部类可以与正常类一样 使用不同的修饰符来修饰
+    好处1.省略了一个.java文件  
+    好处2.成员内部类中可以访问外部类的所有成员 包括私有的
+    若想要在内部类中通过对象.调用外部类成员   外部类.this.外部类成员;
+    内部类存在后 源代码进行编译 产生一个字节码  Demo$InnerDemo.class
     
-    LinkedBox   Node内部类
+2.局部内部类
 
-	*1.成员内部类
-		将一个类直接定义在类的里面，作为成员，与属性或方法层次一致
-		成员内部类可以与正常类一样 使用不同的修饰符来修饰
-		好处1.省略了一个.java文件  好处2.成员内部类中可以访问外部类的所有成员 包括私有的
-		若想要在内部类中通过对象.调用外部类成员   外部类.this.外部类成员;
-		内部类存在后 源代码进行编译 产生一个字节码  Demo$InnerDemo.class
-	2.局部内部类
-		将一个类定义在方法/块里面，作为成员的内部结构，与临时的局部变量一个层次
-		局部内部类像是一个局部的变量一样，不能用public protected private及static
-		只能用abstract或final
-		局部内部类命名规则Demo$1InnerTestMethod   Demo$2InnerTestMethod
-		局部内部类使用的变量只能是final修饰
-	*3.匿名内部类
-		成员匿名内部类
-		局部匿名内部类
-		public interfase Test{
-			public void test();
-		}
-		Test t = new Test(){
-			public void test(){
-			}
-		};
-		通常接口或抽象类的具体子类这样写
-		开发中为了省略一个类文件   上述写法比较常见
-		匿名内部类很特殊 只有类体 没有类的所有结构( 修饰符 名字 继承 实现)
-		不能用任何修饰符来修饰  匿名内部类也没有构造方法
-		Swing  做一个按钮 绑定一个事件监听器
-	4.静态内部类
-		成员静态内部类
-		不需要外部类对象，通过正常的方式直接创建内部类
-		静态元素不能访问非静态成员(自己类和外部类)
+    将一个类定义在方法/块里面，作为成员的内部结构，与临时的局部变量一个层次
+    局部内部类像是一个局部的变量一样，不能用public protected private及static
+    只能用abstract或final
+    局部内部类命名规则Demo$1InnerTestMethod   Demo$2InnerTestMethod
+    局部内部类使用的变量只能是final修饰
+
+*3.匿名内部类
+
+    匿名内部类也就是没有名字的内部类
+    正因为没有名字，所以匿名内部类只能使用一次，它通常用来简化代码编写
+    但使用匿名内部类还有个前提条件：必须继承一个父类或实现一个接口
+
+    成员匿名内部类
+    局部匿名内部类
+```java
+public interfase Test{
+public void test();
+}
+Test t = new Test(){
+    public void test(){
+    }
+};
+```
+    通常接口或抽象类的具体子类这样写
+    开发中为了省略一个类文件   上述写法比较常见
+    匿名内部类很特殊 只有类体 没有类的所有结构( 修饰符 名字 继承 实现)
+    不能用任何修饰符来修饰  匿名内部类也没有构造方法
+    Swing  做一个按钮 绑定一个事件监听器
+
+4.静态内部类
+
+    成员静态内部类
+    不需要外部类对象，通过正常的方式直接创建内部类
+    静态元素不能访问非静态成员(自己类和外部类)
+
+```java
+public class Demo {
+    private String name = "这是正常类中的属性";
+    public void testDemo(){
+        System.out.println("这是正常类中的方法");
+    }
+    public void testDemoOne(){
+        String s = "";
+        //定义一个局部内部类
+        class InnerTestMethod{
+            //局部内部类中使用的局部变量都需要加final修饰
+            final String ss = s;
+
+        }
+    }
+    //成员内部类
+    public class InnerDemo{
+        private String name="我是内部类的属性";
+        public void testInnerDemo(){
+            System.out.println("我是成员内部类的方法:"+this.name);
+            // 调用dome类的方法
+            Demo.this.testDemo();
+        }
+    }
+
+    private static class InnerDemoStatic{
+
+    }
+};
+
+public class TestMain {
+    public static void main(String[] args){
+        //内部类属于外部类的(相当于是一个成员) 需要外部类对象才能操作
+        //创建内部类的对象---调用内部类的方法
+        Demo demo = new Demo();
+        InnerDemo innerDemo = demo.new InnerDemo();
+        //调用内部类的方法
+        innerDemo.testInnerDemo();
+        //静态的成员内部类
+        InnerDemoStatic ids = new InnerDemoStatic();
+    }
+}
 
 
+```
