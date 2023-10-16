@@ -8,7 +8,9 @@
   },
   "scripts": {
     "dev": "docsify serve docs --port 4000",
-    "upload": "push.sh && upload.sh",
+    "push": "push.sh",
+    "upload": "upload.sh",
+    "build": "push.sh && upload.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

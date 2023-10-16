@@ -1,7 +1,7 @@
 [TOC]
 
-
-# 类的修饰符
+#
+# 类的修饰符(decorate)
 
 - Java类和类之间的关系
 
@@ -191,7 +191,7 @@ public class Cs {
             抽象类中能不能没有具体成员  全部都是抽象方法  可以 ---> 抽象类抽象到极致 质的变化 ---> 接口
             接口可以理解为是抽象类抽象到极致--->还是一个类的结构   不能用class修饰 改用interface修饰
 
-## 接口（interface）
+# 接口（interface）
 
 什么是接口(通常是为了定义规则)
 
@@ -250,7 +250,7 @@ public class Cs {
     *接口---**多继承**---接口	可以直接多实现
 
 
-## 加载顺序（继承关系）
+# 加载顺序（继承关系）
 
 tips:加载类的过程---静态元素已经加载
 
@@ -345,7 +345,7 @@ public class Test {
 12. 将对象空间的地址引用交给 变量来存储
 
 
-## 多态
+# 多态
 
 同一个对象 体现出来的多种不同形态(身份)  将一种行为表现出不同的效果，要想实现多态的效果 **需要现有继承关系**。
 
@@ -374,7 +374,7 @@ public class Test {
 
         StackOverflowError  栈内存溢出错误
 
-![singleton简图](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/java/designPattern/多态.png)
+![singleton简图](https://cdn.jsdelivr.net/gh/findwei/learnImages@main/java/objectAdvance/多态.png)
 ```java
 public class Animal {
     public String name = "Animal的name属性";
@@ -473,7 +473,7 @@ public class Test {
 }
 ```
 
-## 内部类
+# 内部类
 
     指的是在Java中可以将一个类定义在另一个类的内部
     内部类可以定义在  类的内部 (与类成员层次一致)
@@ -570,3 +570,5 @@ public class TestMain {
 
 
 ```
+
+# 枚举（Enum）

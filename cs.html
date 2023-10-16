@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let a = 'a'
+        // let a1 = 'a'
+        // let a2 = new String('a')
+        // let a3 = new String('a')
+        // let a4 = String('a')
+        // let a5 = String('a')
+
+        // console.log(a, a1, a2, a3, a4, a5)
+
+        // console.log(a.valueOf())
+        // console.log(a2.valueOf())
+        // console.log(a4.valueOf())
+
+        // console.log(typeof a)
+        // console.log(typeof a2)
+        // console.log(typeof a4)
+
+        // console.log(a == a1)
+        // console.log(a == a2)
+        // console.log(a2 == a3)
+        // console.log(a == a4)
+        // console.log(a4 == a5)
+
+        // console.log(a === a1)
+        // console.log(a === a2)
+        // console.log(a2 === a3)
+        // console.log(a === a4)
+        // console.log(a4 === a5)
+
+        let p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve()
+            }, 1000)
+        })
+        p.then(() => {
+            console.log('then')
+            return 'then'
+            // return Promise.resolve('then')
+        }).catch(() => {
+            console.log('catch')
+        }).finally(() => {
+            console.log('finally')
+            // return 'finally'
+        })
+        p.then((res)=>{
+            console.log(res)
+        })
+    </script>
+</body>
+
+</html>
