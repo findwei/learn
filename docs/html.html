@@ -56,15 +56,34 @@
         // console.log(i++ + ++i)
 
 
-        console.log("1 a:", a);
+        // console.log("1 a:", a);
+        // if (true) {
+        //     console.log(a)
+        //     a = 1;
+        //     console.log("2 a:", a);
+        //     a = 5;
+        //     var a;
+        // }
+        // console.log("3 a:", a);
+
+
+        var a = 0;
+        // GO={a:0}
+        console.log("1 a:", a); //0
+        // GO:{a=1} 是if里面执行到 定义function a() {} 的时候更改的
         if (true) {
-            console.log(a)
+            // AO={a:function a() {}}
             a = 1;
-            console.log("2 a:", a);
+            //  AO={a:1}
+            console.log(window.a)
+            function a() { } //当执行到这一步的时候 将当前块作用域的 a = 1  赋值给 全局作用域的 a 
+            //  AO={a:1}
+            //  GO:{a=1}
             a = 5;
-            var a;
+            //  AO={a:5}
+            console.log("2 a:", a); //5
         }
-        console.log("3 a:", a);
+        console.log("3 a:", a); //1
     </script>
 </body>
 

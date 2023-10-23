@@ -9,3 +9,4 @@
 -->
 - javascript
   - [基础](page/javascript/index.md)
+  - [闭包](page/javascript/bibao.md)
