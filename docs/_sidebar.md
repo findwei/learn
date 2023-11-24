@@ -1,3 +1,4 @@
+  - [git](page/git/index.md)
   - [css](page/css/index.md)
   - [javascript](page/javascript/index.md)
   - [ES6](page/es6/index.md)
