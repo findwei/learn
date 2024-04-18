@@ -66,24 +66,43 @@
         // }
         // console.log("3 a:", a);
 
+        // console.log(a)
+        // var a = 0;
+        // // GO={a:0}
+        // console.log("1 a:", a); //0
+        // // GO:{a=1} 是if里面执行到 定义function a() {} 的时候更改的
+        // if (true) {
+        //     // AO={a:function a() {}}
+        //     a = 1;
+        //     //  AO={a:1}
+        //     console.log(window.a)
+        //     function a() { } //当执行到这一步的时候 将当前块作用域的 a = 1  赋值给 全局作用域的 a 
+        //     //  AO={a:1}
+        //     //  GO:{a=1}
+        //     console.log(window.a)
+        //     a = 5;
+        //     //  AO={a:5}
+        //     console.log("2 a:", a); //5
+        // }
+        // console.log("3 a:", a); //1
 
-        var a = 0;
-        // GO={a:0}
-        console.log("1 a:", a); //0
-        // GO:{a=1} 是if里面执行到 定义function a() {} 的时候更改的
+        
+        // 例5 - 里面是var声明不是函数 
+        // GO={a:undefiend}
+        console.log("1 a:", a); //undefiend
+        // GO:{a=1} 是if里面执行到 var a; 的时候更改的
         if (true) {
-            // AO={a:function a() {}}
+            // AO={a:undefind}
             a = 1;
             //  AO={a:1}
-            console.log(window.a)
-            function a() { } //当执行到这一步的时候 将当前块作用域的 a = 1  赋值给 全局作用域的 a 
+            var a; //当执行到这一步的时候 将当前块作用域的 a = 1  赋值给 全局作用域的 a 
             //  AO={a:1}
-            //  GO:{a=1}
             a = 5;
             //  AO={a:5}
             console.log("2 a:", a); //5
         }
         console.log("3 a:", a); //1
+
     </script>
 </body>
 

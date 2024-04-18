@@ -8,6 +8,10 @@
 </head>
 
 <body>
+    <div class="form-input">
+        <input type="text" value="" />
+    </div>
+    <div class="form-msg" style="color:#f40">请输入正确的手机号码</div>
     <script>
         // let a = 'a'
         // let a1 = 'a'
@@ -38,25 +42,38 @@
         // console.log(a === a4)
         // console.log(a4 === a5)
 
-        let p = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve()
-            }, 1000)
-        })
-        p.then(() => {
-            console.log('then')
-            return 'then'
-            // return Promise.resolve('then')
-        }).catch(() => {
-            console.log('catch')
-        }).finally(() => {
-            console.log('finally')
-            // return 'finally'
-        })
-        p.then((res)=>{
-            console.log(res)
-        })
-        
+        // let p = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve()
+        //     }, 1000)
+        // })
+        // p.then(() => {
+        //     console.log('then')
+        //     return 'then'
+        //     // return Promise.resolve('then')
+        // }).catch(() => {
+        //     console.log('catch')
+        // }).finally(() => {
+        //     console.log('finally')
+        //     // return 'finally'
+        // })
+        // p.then((res)=>{
+        //     console.log(res)
+        // })
+
+
+        // const reg = /^1\d{10}$/g;
+        // const msg = document.querySelector(".form-msg");
+        // const input = document.querySelector(".form-input input");
+        // console.log(msg, input)
+        // input.oninput = function () {
+        //     if (reg.test(this.value)) {
+        //         msg.style.display = "none";
+        //     } else {
+        //         msg.style.display = "block";
+        //     }
+        // };
+
     </script>
 </body>
 

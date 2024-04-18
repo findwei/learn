@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eventStream dome</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <audio
+        src="http://tts.dui.ai/runtime/v1/cache/624ed16e37634d769abe2da4f576e549?productId=278571900&aispeech-da-env=hd-ack"
+        controls></audio>
+    <div id="main"></div>
+    <div class="" id="buttom">请求</div>
+    <script>
+        const mainDom = document.querySelector('#main')
+        // 创建一个新的 AbortController 实例
+        const controller = new AbortController();
+        const signal = controller.signal;
+        // 一个文字文字的显示
+        let tirm = null
+        let textArr = []
+        const addText = (text) => {
+            textArr.push(text)
+            if (tirm) {
+                return
+            }
+            let currentIndex = 0
+            let firstArr = textArr.splice(0, 1)
+            // 每隔一定时间添加一个字符
+            tirm = setInterval(() => {
+                // 获取当前要显示的字符
+                const char = firstArr[0][currentIndex];
+
+                mainDom.textContent += char
+
+                // 更新索引
+                currentIndex++;
+
+                // 判断是否已经添加完所有字符
+                if (currentIndex === firstArr[0].length) {
+                    if (textArr.length == 0) {
+                        console.log(textArr)
+                        clearInterval(tirm); // 停止定时器
+                        tirm = null
+                    }
+                    currentIndex = 0
+                    firstArr = textArr.splice(0, 1)
+                }
+            }, 100); // 每100毫秒添加一个字符
+        }
+        // 一个文字文字的显示 end
+
+        // const readEventStream = async () => {
+        //     const decoder = new TextDecoder('utf-8');
+        //     const res = await fetch("http://localhost:3200/", {
+        //         // const res = await fetch("https://aistore-business.talkinggenie.com/di-llm/api/v1/conversation/message", {
+        //         method: 'post',
+        //         headers: { 'Content-Type': 'application/json' },
+        //         signal: signal, // 将 signal 传递给 fetch 请求的 signal 参数
+        //         body: JSON.stringify({
+        //             "context": {
+        //                 "recordId": 'uuid',
+        //                 "sessionId": 'ssss'
+        //             },
+        //             "enableTts": true,
+        //             "docId": "DID678736723509250",
+        //             "extInfo": {},
+        //             "query": "我想办理居住证",
+        //             "skillId": "DIS678736715120645",
+        //             "stream": true
+        //         }),
+        //     })
+        //     if (!res.body) {
+        //         return
+        //     }
+        //     const reader = res.body.getReader();
+        //     while (true) {
+        //         const { value, done } = await reader.read();
+        //         if (done) break;
+        //         //value 是一个 Uint8Array 数据
+        //         const val = decoder.decode(value)
+        //         console.log(val)
+        //         const nval = val.replace(/^data:/, '');
+        //         try {
+        //             json = JSON.parse(nval)
+        //             console.log(json)
+        //             // mainDom.textContent += json.data
+        //             // addText(json.data)
+        //         } catch (error) {
+        //             console.log(error)
+        //             // 终止请求
+        //             controller.abort();
+        //         }
+        //     }
+        // }
+
+        const readEventStream = async () => {
+            const decoder = new TextDecoder('utf-8');
+            // const res = await fetch("http://localhost:3200/", {
+            const res = await fetch("https://aistore-business.talkinggenie.com/di-llm/api/v1/conversation/message", {
+                method: 'post',
+                headers: { 'Content-Type': 'application/json' },
+                signal: signal, // 将 signal 传递给 fetch 请求的 signal 参数
+                body: JSON.stringify({
+                    "context": {
+                        "recordId": 'uuid',
+                        "sessionId": 'ssss'
+                    },
+                    "enableTts": true,
+                    "docId": "DID678736723509250",
+                    "extInfo": {},
+                    "query": "我想办理无犯罪记录证明",
+                    "skillId": "DIS678736715120645",
+                    "stream": false
+                }),
+            }).then((res) => {
+                return res.json()
+            }).then((res) => {
+                console.log(res)
+            })
+        }
+        document.querySelector('#buttom').addEventListener('click', () => {
+            readEventStream()
+        })
+        // readEventStream()
+
+        // const promise = new Promise(function (resolve, reject) {
+        //     // ... some code
+
+        //     if (true) {
+        //         resolve('success');
+        //     } else {
+        //         reject('fial');
+        //     }
+        // }).then((res) => {
+        //     console.log(res)
+        //     return Promise.reject('123')
+        // }, (err) => {
+        //     console.log(err)
+        // }).catch((err) => {
+        //     console.log('catch', err)
+        // })
+
+
+        // let arr = [
+        //     `{ "code": 200, "message": "Success", "data": { "context": { "recordId": "64519d26s9824w408ws8ssse8wwwss2d55a3b852a0cdf", "sessionId": "328b1sf9fwssdssksswssssesss5sssss9s6s8ss1s358" }, "qaInfo": { "question": "我想办理无犯罪记录证明", "answer": "苏州籍", "ttsText": "苏州籍" }, "unknown": false, "associatedQuestions": null, "recommendedQuestions": null, "hotQuestions": null, "query": "我想办理无犯罪记录证明", "ttsResult": { "url": "http://tts.dui.ai/runtime/v1/cache/bd4c24ec65bf485dbedbb170e7b96979?productId=278571900&aispeech-da-env=hd-ack" }, "sensitive": false, "isFinal": false } }`,
+
+        //     `{ "code": 200, "message": "Success", "data": { "context": { "recordId": "64519d26s9824w408ws8ssse8wwwss2d55a3b852a0cdf", "sessionId": "328b1sf9fwssdssksswssssesss5sssss9s6s8ss1s358" }, "qaInfo": { "question": "我想办理无犯罪记录证明", "answer": "或者持有苏州有效居住证的居民可以通过线上或线下办理《无犯罪记录证明》。\n线下申请，请到户籍所在地或居住地派出所申请办理，详询当地", "ttsText": "或者持有苏州有效居住证的居民可以通过线上或线下办理《无犯罪记录证明》。\n线下申请，请到户籍所在地或居住地派出所申请办理，详询当地" }, "unknown": false, "associatedQuestions": null, "recommendedQuestions": null, "hotQuestions": null, "query": "我想办理无犯罪记录证明", "ttsResult": { "url": "http://tts.dui.ai/runtime/v1/cache/f2dcacbe03694b07a3bc3149e9039ce5?productId=278571900&aispeech-da-env=hd-ack" }, "sensitive": false, "isFinal": false } }`,
+
+        //     `{ "code": 200, "message": "Success", "data": { "context": { "recordId": "64519d26s9824w408ws8ssse8wwwss2d55a3b852a0cdf", "sessionId": "328b1sf9fwssdssksswssssesss5sssss9s6s8ss1s358" }, "qaInfo": { "question": "我想办理无犯罪记录证明", "answer": "派出所。", "ttsText": "派出所。" }, "unknown": false, "associatedQuestions": null, "recommendedQuestions": null, "hotQuestions": null, "query": "我想办理无犯罪记录证明", "ttsResult": { "url": "http://tts.dui.ai/runtime/v1/cache/76a54d9aa77b4338b4f229baaa92fb15?productId=278571900&aispeech-da-env=hd-ack" }, "sensitive": false, "isFinal": false } }`,
+
+        //     `{ "code": 200, "message": "Success", "data": { "context": { "recordId": "64519d26s9824w408ws8ssse8wwwss2d55a3b852a0cdf", "sessionId": "328b1sf9fwssdssksswssssesss5sssss9s6s8ss1s358" }, "qaInfo": { "question": "我想办理无犯罪记录证明", "answer": "\n/*\"widget\": \"button\",  \"widgetName\": \"在线申请\", \"url\": \"/index?", "ttsText": "\n/*\"widget\": \"button\",  \"widgetName\": \"在线申请\", \"url\": \"/index?" }, "unknown": false, "associatedQuestions": null, "recommendedQuestions": null, "hotQuestions": null, "query": "我想办理无犯罪记录证明", "ttsResult": { "url": "http://tts.dui.ai/runtime/v1/cache/e40f7a6c5e3648a0a8170940b6d490db?productId=278571900&aispeech-da-env=hd-ack" }, "sensitive": false, "isFinal": false } }`,
+
+        //     `{ "code": 200, "message": "Success", "data": { "context": { "recordId": "64519d26s9824w408ws8ssse8wwwss2d55a3b852a0cdf", "sessionId": "328b1sf9fwssdssksswssssesss5sssss9s6s8ss1s358" }, "qaInfo": { "question": "我想办理无犯罪记录证明", "answer": "type=handle\",  \"own\": true,  \"lineBreak\": true,  \"lineBreakMessage\": \"点击“在线申请”，让我", "ttsText": "type=handle\",  \"own\": true,  \"lineBreak\": true,  \"lineBreakMessage\": \"点击“在线申请”，让我" }, "unknown": false, "associatedQuestions": null, "recommendedQuestions": null, "hotQuestions": null, "query": "我想办理无犯罪记录证明", "ttsResult": { "url": "http://tts.dui.ai/runtime/v1/cache/1ac712514ecd4e65825f253890008d9a?productId=278571900&aispeech-da-env=hd-ack" }, "sensitive": false, "isFinal": false } }`,
+
+        //     `{ "code": 200, "message": "Success", "data": { "context": { "recordId": "64519d26s9824w408ws8ssse8wwwss2d55a3b852a0cdf", "sessionId": "328b1sf9fwssdssksswssssesss5sssss9s6s8ss1s358" }, "qaInfo": { "question": "我想办理无犯罪记录证明", "answer": "带您在线申请无犯罪记录证明吧\"*/。", "ttsText": "带您在线申请无犯罪记录证明吧\"*/。" }, "unknown": false, "associatedQuestions": null, "recommendedQuestions": null, "hotQuestions": null, "query": "我想办理无犯罪记录证明", "ttsResult": { "url": "http://tts.dui.ai/runtime/v1/cache/1e26b80d86ea46c0a992e244492fda84?productId=278571900&aispeech-da-env=hd-ack" }, "sensitive": false, "isFinal": false } }`,
+
+        //     `{ "code": 200, "message": "Success", "data": { "context": { "recordId": "64519d26s9824w408ws8ssse8wwwss2d55a3b852a0cdf", "sessionId": "328b1sf9fwssdssksswssssesss5sssss9s6s8ss1s358" }, "qaInfo": { "question": "我想办理无犯罪记录证明", "answer": "", "ttsText": "" }, "unknown": false, "associatedQuestions": null, "recommendedQuestions": null, "hotQuestions": null, "query": "我想办理无犯罪记录证明", "ttsResult": { "url": "http://tts.dui.ai/runtime/v1/cache/1e26b80d86ea46c0a992e244492fda84?productId=278571900&aispeech-da-env=hd-ack" }, "sensitive": false, "isFinal": true } }`,
+
+        // ]
+
+        // // console.log(JSON.parse(arr[0]))
+        // // console.log(JSON.parse(arr[1]))
+        // // console.log(JSON.parse(arr[2]))
+        // function parseSpecialCharacters(jsonString) {
+        //     // const specialChars = {
+        //     //     '\n': '\\n',
+        //     //     '\t': '\\t',
+        //     //     '\r': '\\r'
+        //     //     // 可以根据需要添加其他特殊字符的转换规则
+        //     // };
+
+        //     // 使用正则表达式替换特殊字符
+        //     // return jsonString.replace(/\\[ntr]/g, match => specialChars[match]);
+        //     return jsonString.replace(/\n/g, "\\n").replace(/\r/g, "\\r");
+        // }
+
+        // const w = async () => {
+        //     let a = 0
+        //     while (a < 7) {
+        //         // let nval = JSON.parse(arr[a])
+        //         let navla = await fun(a)
+        //         console.log(navla)
+        //         a++
+        //     }
+        // }
+
+        // let fun = (a) => {
+        //     // const nval1 = arr[a].replace(/\n/g, '\\\\n');
+        //     // let nval = JSON.parse(nval1)
+        //     // console.log(nval,'==========')
+        //     // let s = JSON.stringify(arr[a])
+        //     // let nval1 = JSON.parse(s)
+        //     // let nval2 = JSON.parse(nval1)
+        //     // let navl = JSON.parse(parseSpecialCharacters(arr[a]))
+        //     let navl = eval(`(${arr[a]})`)
+        //     return navl
+        // }
+
+        // w()
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!--
+ * @Author: 钱巍
+ * @Date: 2024-03-22 11:15:55
+ * @LastEditTime: 2024-03-25 11:29:14
+ * @LastEditors: 钱巍
+ * @Description: 
+ * @FilePath: \v2-testd:\wei.qian\projectCode\learn\eventStream copy.html
+ * 没有理想，何必远方。
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eventStream dome</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- <audio
+        src="http://tts.dui.ai/runtime/v1/cache/624ed16e37634d769abe2da4f576e549?productId=278571900&aispeech-da-env=hd-ack"
+        controls></audio> -->
+    <div id="main"></div>
+    <div class="" id="buttom">请求</div>
+
+    <script>
+        // // 创建一个新的 AbortController 实例
+        // const controller = new AbortController();
+        // const signal = controller.signal;
+
+        // const readEventStream = async () => {
+        //     const decoder = new TextDecoder('utf-8');
+        //     const res = await fetch("http://172.16.57.47:3200/", {
+        //     // const res = await fetch("https://aistore-business.talkinggenie.com/di-llm/api/v1/conversation/message", {
+        //         method: 'post',
+        //         // headers: { 'Content-Type': 'application/json' },
+        //         headers: { 'Content-Type': 'application/json' },
+        //         signal: signal, // 将 signal 传递给 fetch 请求的 signal 参数
+        //         body: JSON.stringify({
+        //             "context": {
+        //                 "recordId": 'uuid',
+        //                 "sessionId": 'ssss'
+        //             },
+        //             "enableTts": true,
+        //             "docId": "DID678736723509250",
+        //             "extInfo": {},
+        //             "query": "我想办理无犯罪记录证明",
+        //             "skillId": "DIS678736715120645",
+        //             "stream": true
+        //         }),
+        //     })
+        //     if (!res.body) {
+        //         return
+        //     }
+        //     const reader = res.body.getReader();
+        //     while (true) {
+        //         const { value, done } = await reader.read();
+        //         if (done) break;
+        //         //value 是一个 Uint8Array 数据
+        //         const val = decoder.decode(value)
+        //         console.log(typeof (val))
+        //         console.log(val)
+        //         // console.log(String.raw`${val}`)
+        //         // console.log(JSON.stringify(val))
+        //         // const nval = val.replace(/^data:/, '');
+        //         const nval = splitstr(val)
+        //         console.log(nval, '-----------------')
+        //         if (!nval) {
+        //             continue
+        //         }
+        //         try {
+        //             json = JSON.parse(nval)
+        //             console.log(json)
+        //             // mainDom.textContent += json.data
+        //             // addText(json.data)
+        //         } catch (error) {
+        //             console.log(error)
+        //             // 终止请求
+        //             controller.abort();
+        //         }
+        //     }
+        // }
+
+        // document.querySelector('#buttom').addEventListener('click', () => {
+        //     readEventStream()
+        // })
+
+
+        // function splitstr(inputString) {
+
+        //     let startIndex = inputString.indexOf("{"); // 查找第一个 { 的位置
+        //     let endIndex = inputString.lastIndexOf("}"); // 查找最后一个 } 的位置
+
+        //     if (startIndex !== -1 && endIndex !== -1 && startIndex < endIndex) {
+        //         return resultString = inputString.substring(startIndex, endIndex + 1); // 截取两个位置之间的内容
+
+        //     }
+        //     return false
+        // }
+
+
+
+        // 
+    </script>
+
+</body>
+
+
+
+</html>
