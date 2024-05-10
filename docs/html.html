@@ -76,7 +76,8 @@
         //     a = 1;
         //     //  AO={a:1}
         //     console.log(window.a)
-        //     function a() { } //当执行到这一步的时候 将当前块作用域的 a = 1  赋值给 全局作用域的 a 
+        //      //es6出来后 w3c组织明确规定不能在条件语句里面声明函数 当时为了兼容以前老代码 浏览器并没有按照w3c的要求实现
+        //     function a() { } //es6 function 声明相当于let 所以这里就是一个块级作用域 但是为了兼容以前es5老代码 //当执行到这一步的时候 将当前块作用域的 a = 1  赋值给 全局作用域的 a
         //     //  AO={a:1}
         //     //  GO:{a=1}
         //     console.log(window.a)
@@ -86,22 +87,8 @@
         // }
         // console.log("3 a:", a); //1
 
-        
-        // 例5 - 里面是var声明不是函数 
-        // GO={a:undefiend}
-        console.log("1 a:", a); //undefiend
-        // GO:{a=1} 是if里面执行到 var a; 的时候更改的
-        if (true) {
-            // AO={a:undefind}
-            a = 1;
-            //  AO={a:1}
-            var a; //当执行到这一步的时候 将当前块作用域的 a = 1  赋值给 全局作用域的 a 
-            //  AO={a:1}
-            a = 5;
-            //  AO={a:5}
-            console.log("2 a:", a); //5
-        }
-        console.log("3 a:", a); //1
+
+
 
     </script>
 </body>

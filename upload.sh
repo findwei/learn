@@ -11,8 +11,7 @@ file_name=${file_prefix}-dist.tar.gz
 # 远程服务器地址
 remote=admin.webber.run
 # 远程服务器项目路径
-remote_project_path=/www/wwwroot/webber
-
+remote_project_path=/www/wwwroot/webber.run
 
 echo '压缩打包开始....'
 tar -zcvf './'$file_name ./docs >/dev/null
@@ -36,4 +35,3 @@ echo '删除成功'
 # echo '重启Nginx'
 # ssh root@$remote 'nginx -s reload'
 # echo 'Nginx 重启完成'
-

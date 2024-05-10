@@ -11,3 +11,4 @@
   - [基础](page/javascript/index.md)
   - [闭包](page/javascript/bibao.md)
   - [预编译](page/javascript/预编译.md)
+  - [正则（RegExp）](page/javascript/RegExp.md)
