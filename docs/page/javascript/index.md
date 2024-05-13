@@ -10,6 +10,7 @@
 
 # 基础知识
 
+<a href="https://raw.githubusercontent.com/findwei/learnImages/master/javascript/js基础.pdf" target="_blank">js基础pdf文档(raw.github)</a>
 <a href="https://cdn.jsdelivr.net/gh/findwei/learnImages@main/javascript/js基础.pdf" target="_blank">js基础pdf文档</a>
 
 # this
