@@ -10,7 +10,7 @@
 
 ## 写入cookie的方式
 
-1. 前端js写入
+1. 前端js写入（前端不能跨域写入）
 2. 通过网络（http、https）请求设置响应头写入
 
 ## 跨域写入cookie的方式
@@ -37,4 +37,11 @@
 4. JSONP（写入到b.com）
    
    利用script标签不受同源策略的影响 后端设置请求头set-cookie
+
+## 例子
+
+1. 单点登录，比如在login.com下登录成功 需要向 a.com、b.com、c.com 这三个域名下都塞cookie
+2. 塞cookie需要后端完成，因为前端不能跨域搞cookie 所以需要利用网络请求设置set-cookie
+3. 那么就需要接入单点登录的项目（这里是 a.com、b.com、c.com）都要提供一个setCookie的接口
+4. 前端同时通过JSONP请求a.com/setCookie,b.com/setCookie,c.com/setCookie 就会向这三个域名写入cookie
 
