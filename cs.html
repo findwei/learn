@@ -12,6 +12,7 @@
         <input type="text" value="" />
     </div>
     <div class="form-msg" style="color:#f40">请输入正确的手机号码</div>
+
     <script>
         // let a = 'a'
         // let a1 = 'a'
@@ -42,24 +43,50 @@
         // console.log(a === a4)
         // console.log(a4 === a5)
 
-        // let p = new Promise((resolve, reject) => {
-        //     setTimeout(() => {
-        //         resolve()
-        //     }, 1000)
-        // })
-        // p.then(() => {
-        //     console.log('then')
-        //     return 'then'
-        //     // return Promise.resolve('then')
-        // }).catch(() => {
-        //     console.log('catch')
-        // }).finally(() => {
-        //     console.log('finally')
-        //     // return 'finally'
-        // })
-        // p.then((res)=>{
-        //     console.log(res)
-        // })
+        let p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // resolve()
+                reject()
+            }, 1000)
+        })
+        const p2 = p.then(() => {
+            console.log('then')
+            return 'then'
+        })
+            .then((res) => {
+                console.log(res)
+                return '返回then2'
+            })
+            .catch(() => {
+                console.log('catch')
+                // throw new Error()
+                // return 'catch1'
+                return Promise.reject('Promise.reject catch')
+            })
+            .catch((err) => {
+                console.log('catch000', err)
+                return 'catch2'
+            })
+            .then((res) => {
+                console.log(res)
+                return Promise.reject('Promise.reject catch11')
+                // return 'return then'
+                // return Promise.resolve(' Promise.resolve then')
+
+            })
+            .catch((err) => {
+                console.log('catc222h', err)
+                return 'catch2222'
+            })
+            .finally(() => {
+                console.log('finally')
+                // return 'finally'
+            })
+        p2.then((res) => {
+            console.log('ss', res)
+        }).catch(err => {
+            console.log(err)
+        })
 
 
         // const reg = /^1\d{10}$/g;

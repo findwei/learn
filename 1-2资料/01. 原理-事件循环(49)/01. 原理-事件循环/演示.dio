@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="j6MMx3zVA6UG3kYNeDhy" name="单队列演示">
-        <mxGraphModel dx="502" dy="996" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+        <mxGraphModel dx="1638" dy="1062" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -29,7 +29,7 @@
         </mxGraphModel>
     </diagram>
     <diagram name="多队列演示" id="qosdZPUmqT6TrNY6YO2C">
-        <mxGraphModel dx="502" dy="996" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1638" dy="1062" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="IcJjtIm7yJr0aKIhH1Xx-0"/>
                 <mxCell id="IcJjtIm7yJr0aKIhH1Xx-1" parent="IcJjtIm7yJr0aKIhH1Xx-0"/>

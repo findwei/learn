@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <title>Illustration of containing blocks</title>
+    <style>
+        #div1 {
+            position: absolute;
+            left: 50px;
+            top: 50px
+        }
+
+        #em1 {
+            position: absolute;
+            left: 100px;
+            top: 100px
+        }
+
+        strong {
+            background-color: beige;
+        }
+
+        #sp {
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div id="div1">
+        <p id="p1">This is text in the first paragraph...</p>
+        <p id="p2">
+            This is text
+            <em id="em1">
+                in the
+                <strong id="strong1">second</strong>
+                paragraph.
+            </em>
+        </p>
+    </div>
+    <div style="margin-left: 30px; background-color: aquamarine;will-change:transform;">
+        <span id="sp">span</span>
+    </div>
+</body>
+
+</html>

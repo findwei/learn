@@ -13,6 +13,9 @@
 <a href="https://raw.githubusercontent.com/findwei/learnImages/master/javascript/js基础.pdf" target="_blank">js基础pdf文档(raw.github)</a>
 <a href="https://cdn.jsdelivr.net/gh/findwei/learnImages@main/javascript/js基础.pdf" target="_blank">js基础pdf文档</a>
 
+<iframe src="/pdfjs-4.2.67-dist/web/viewer.html?file=https://raw.githubusercontent.com/findwei/learnImages/master/javascript/js基础.pdf" height="400" ></iframe>
+
+
 # this
 
 > this 是一个对象
