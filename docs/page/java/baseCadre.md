@@ -9,7 +9,6 @@
 1. 单分支
 
 ```
-
 单分支 if else
 	Math.random() //范围是是 [0,1) 左闭右开
 	if(值=>boolean)
