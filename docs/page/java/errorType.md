@@ -10,4 +10,5 @@
 | ArithmeticException            | 算数异常                                       |
 | ClassCastException             | 造型异常  将对象的类型还原时  与真实类型不匹配 |
 | StackOverflowError             | 栈内存溢出错误                                 |
+| OutOfMemoryError               | 堆内存溢出错误                                 |
 

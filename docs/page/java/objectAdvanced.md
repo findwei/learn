@@ -462,7 +462,7 @@ public class Test {
 
 # 内部类
 
-指的是在Java中可以将一个类定义在另一个类的内部
+内部类指的是将一个类的定义放置在另一个类的内部
 
 内部类可以定义在  类的内部 (与类成员层次一致)
 
@@ -613,4 +613,196 @@ public class OuterClass {
 ```
 
 # 枚举（Enum）
+
+数据类型
+
+基本:8个 整型 （`byte short int long`） 浮点（`float double`）  字符 （`char`） 布尔 （`boolean`）
+
+引用: 数组`[]`  类`class` 抽象类`abstract class` 接口`interface` 枚举`enum` 注解`@interface` 
+
+**枚举类**
+
+一个类中的对象 认为个数是有限且固定的 可以将每一个对象一一列举出来 ，自己定义的每一个enum类型 都会默认继承Enum 间接继承Object
+
+1. 试一试若没有枚举类型的时候  如何手动设计  (静态常量 单例模式)  Day(类 当做描述星期 7个对象)
+
+        private构造方法
+        public static final属性 = new
+
+2. JDK1.5版本之后可以直接定义enum类型
+
+  - 我们自己定义的enum类型直接默认继承Enum(java.lang包)
+  - 我们自己定义的enum类型不能再写extends 但是可以实现
+  - Enum类型  有两个属性
+    - name----->枚举对象的名字     name()获取name属性
+    - ordinal--->枚举对象在类中罗列的顺序  类似index  也从0开始   ordinal()获取序号
+  - 常用的方法
+    - valueOf()   通过给定的name获取对应的枚举对象
+    - values()     获取全部的枚举对象  ---> 返回一个数组  Day[]
+    - compareTo()   可以比较两个枚举对象   int
+    - toString()	  由于这个方法没有final修饰  可以覆盖(重写)
+  
+3.switch内部判断枚举的应用
+    
+4.我们也可以在enum中描述自己的一些属性或方法
+
+  - 必须在enum类中第一行 描述一下枚举的样子 最后需要分号结束;
+  - 可以定义自己的属性
+  - 类创建的过程中  帮我们创建枚举类型的对象
+  - 需要给枚举类型提供对应样子的构造方法  构造方法只能`private`修饰  可以重载
+
+```java
+
+import java.util.Scanner;
+public class EnumExample {
+    enum Day {
+        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+    }
+    public static void main(String[] args) {
+        // 创建一个 Scanner 对象来获取用户输入
+        Scanner scanner = new Scanner(System.in);
+
+        // 提示用户输入枚举常量
+        System.out.print("请输入今天是星期几（例如：MONDAY）：");
+        // 读取用户输入的枚举常量字符串
+        String userInput = scanner.nextLine();
+
+        // 根据用户输入的枚举常量字符串创建对应的 Day 枚举常量
+        // Day today = Day.MONDAY;
+        Day today = Day.valueOf(userInput);
+        // 根据用户输入的枚举常量进行操作
+        switch (today) {
+            case MONDAY:
+                System.out.println("Today is Monday.");
+                break;
+            case TUESDAY:
+                System.out.println("Today is Tuesday.");
+                break;
+            // 其他枚举常量的处理...
+            default:
+                System.out.println("Today is not Monday or Tuesday.");
+        }
+        // 关闭 Scanner 对象
+        scanner.close();
+    }
+}
+
+// 或者这种写法
+import java.util.Scanner;
+public enum Day {
+    //描述了七个当前类的对象
+    monday("星期一", 1), tuesday("星期二", 2), wednesday, thursday, friday, saturday, sunday;
+    private String name;
+    private int index;
+    private Day() {
+    }
+    private Day(String name, int index) {
+        this.name = name;
+        this.index = index;
+    }
+    public String getName() {
+        return this.name;
+    }
+    public static void main(String[] args) {
+        //输入一个字符串monday  输出对应的信息
+        Scanner input = new Scanner(System.in);
+        System.out.println("请输入一个星期的英文单词:");
+        String key = input.nextLine();
+        Day day = Day.valueOf(key);//通过输入的英文单词找到了对应的枚举对象
+        switch (day) {
+            case monday:
+                System.out.println("您输入的是" + day.getName());
+                break;
+            case tuesday:
+                System.out.println("您输入的是星期2");
+                break;
+            case wednesday:
+                System.out.println("您输入的是星期3");
+                break;
+            case thursday:
+                System.out.println("您输入的是星期4");
+                break;
+            case friday:
+                System.out.println("您输入的是星期5");
+                break;
+            case saturday:
+                System.out.println("您输入的是星期6");
+                break;
+            case sunday:
+                System.out.println("您输入的是星期7");
+                break;
+            default:
+                System.out.println("出现错误");
+        }
+
+    }
+}
+
+//        Day day = Day.monday;  //获取monday枚举对象
+//        Day today = Day.valueOf(key);//获取key 枚举对象
+//        Day[] days = Day.values();//获取所有的枚举对象
+        //我们自己创建的enum类型 默认继承Enum
+        //我们自己定义的每一个enum类型 都会默认继承Enum 间接继承Object
+
+//        Day d = Day.valueOf("monday");
+//        System.out.println(d.name()+"--"+d.ordinal());
+//        Day[] days = Day.values();//获取所有的枚举对象
+//        for(Day d:days){
+//            System.out.println(d.name()+"--"+d.ordinal());
+//        }
+
+```
+
+
+# 总结
+
+    如何描述类
+        类成员四个  方法
+    如何创建对象
+        执行类成员
+    类之间的关系
+        is-a  has-a  use-a
+    类中特性
+        权限   特征
+    类之间的设计问题
+        设计模式   单例  策略  适配器
+    类中的一些细节
+        内部类  枚举类
+    内存机制问题
+        类创建在哪儿   对象创建在哪里   继承关系   静态成员   方法执行
+        栈内存--->Person p = new Person();---->堆内存    方法区---类模板
+        栈内存--->创建开始 用完立即回收   StackOverflowError
+        方法区--->类   常量   静态   只有一份回收不了
+        堆内存--->new创建的对象  Garbage Collection垃圾回收器  GC
+    Runtime类之中提供了几个管理内存的方法
+        maxMemory
+        totalMemory
+        freeMemory
+        堆内存溢出错误OutOfMemoryError
+    Object类中有一个finalize方法  如果重写也能看见对象回收
+    GC系统提供的一个线程    回收算法
+
+
+-------------------------
+	人家写好的类
+	包装类
+	数学相关
+	日期相关
+	字符串
+	集合
+	输入输出I/O
+	异常相关
+	线程相关
+	网络相关
+
+
+
+
+
+
+
+
+
+
+
 
