@@ -28,7 +28,3 @@
     观察者模式  [适配器模式](page/java/designPattern/strategy.md)  模板模式  责任链模式  解析器模式  迭代子模式 
     命令模式  状态模式  备忘录模式  访问者模式  中介者模式
 
-
-## docsify测试过滤目录 <!-- {docsify-ignore} -->
-
-    加上 `<!-- {docsify-ignore} -->` 可以过滤目录 上面 ‘docsify测试过滤目录’ 没有出现在侧边栏
