@@ -1,4 +1,4 @@
-- java
+- java基础
   - [java](page/java/index.md)
   - [java语言基本结构](page/java/structure.md)
   - [java基本语法](page/java/baseCadre.md)
@@ -6,9 +6,12 @@
   - [java 类](page/java/object.md)
   - [java 类关系](page/java/objectRelationship.md)
   - [java 类高级](page/java/objectAdvanced.md)
-  - [设计模式](page/java/designPattern/index.md)
+  - [java错误类型](page/java/errorType.md)
+- [工具类](page/java/toolsClass/index.md)
+  - [包装类](page/java/toolsClass/包装类.md)
+  - [数学相关](page/java/toolsClass/数学相关.md)
+- [设计模式](page/java/designPattern/index.md)
     - [单例模式](page/java/designPattern/singleton.md)
     - [适配器模式](page/java/designPattern/adapter.md)
     - [策略模式](page/java/designPattern/strategy.md)
-  - [java错误类型](page/java/errorType.md)
   
