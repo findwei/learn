@@ -1,10 +1,11 @@
-# String类
+# String类 
 
 所属的包是java.lang包 没有任何继承关系默认继承Object  实现三个接口`Serializable, CharSequence, Comparable<String>`
 
 String类 使用final `public final class String` 不能继承`String`
 
 String是一个非常特殊的引用数据类型  但是可以像基本类型一样 创建 赋值
+
 
 在 Java 中，String 是一个不可变的类，它的实例表示一个字符序列。String 对象在内存中的存储方式有两种情况：
 
@@ -17,8 +18,6 @@ String是一个非常特殊的引用数据类型  但是可以像基本类型一
 在 Java 7 之前，字符串池是存储在永久代（Permanent Generation）中的一部分。从 Java 7 开始，字符串池被移到了堆内存中的一个叫做 "String Table" 的数据结构中。
 
 需要注意的是，虽然字符串是不可变的，但是可以通过 StringBuilder 或 StringBuffer 类来进行字符串的动态修改。这些类允许在原始字符串上进行插入、删除、替换等操作，但是每次操作都会生成一个新的字符串对象。
-
-
 
 ## 创建String对象
 
@@ -70,6 +69,8 @@ String是一个非常特殊的引用数据类型  但是可以像基本类型一
    体现在两个地方   **长度**及**内容**
    - 长度--->final修饰的数组   数组长度本身不能变  final修饰数组的地址也不变
    - 内容--->private修饰的属性  不能在类的外部访问（保证了数组里面的内容也没法改变）
+   
+   基于不可变特性 String类频繁的修改其内容的时候   **性能很不好**
 
 ## **常用的方法**
         
@@ -261,19 +262,11 @@ System.out.println(time2-time1);
 regular有规律的 expression表达式  （正则表达式）
 
 
-
-
-
-
-
-
-
-
-
-
-
 ## **常见的String笔试题**
-1. ==  equals方法的区别
+
+1. String包  java.lang
+   
+2. ==  equals方法的区别
 
         ==可以比较基本类型  可以比较引用类型
                 比较基本类型比较值 比较引用类型比较地址
@@ -282,17 +275,205 @@ regular有规律的 expression表达式  （正则表达式）
                 如果想要修改其比较规则  可以重写equals方法
                 通常重写equals方法时会伴随着重写hashCode方法
                 比如String类  比如Integer
-2. *String的不可变特性
+
+3. *String的不可变特性
    
         长度及内容
 
-3. String与StringBuffer区别
-4. StringBuffer与StringBuilder区别
-5. String对象的存储
+4. 构造方法  常量 无参数 带参数String byte[] char[]
+5. String内存机制
+   
+        常量"abc" 字符串常量池      构造方法new
+
+        ==  equals()区别
+
+        "a"+"b"+"c"+"d";  产生几个对象
+6. String与StringBuffer区别
+7. StringBuffer与StringBuilder区别
+8. String对象的存储
    
         "abc"---->字符串常量池
         new String("abc")--->堆内存
         "a"+"b"+"c"+"d"
 
-6. *String中常用的方法
+9.  string 常用的方法
+    
+        第一梯队(重写)
+        equals  hashCode  compareTo  toString
+        第二梯队(常用)
+        charAt()  codePointAt()
+        indexOf()  lastIndexOf()
+        substring()  split()  replace()
+        length()  concat()  contains();  trim();
+        getBytes()   toCharArray()  matches()
+        第三梯队(一般)
+        toUpperCase()  toLowerCase()
+        startsWith()  endsWith();
+        isEmpty();
    
+## 练习小任务(以下任务要求设计成方法)
+1.设计一个方法 将字符串反转   ok-->ko
+2.设计一个方法 将给定字符串的正序和反序进行连接  ok-->okko
+3.设计一个方法 判断给定字符串是否是回文    abccba   abcba
+4.设计一个方法 将给定的字符串右位移x位置  (helloworld,2) --> ldhellowor
+5.设计一个方法 寻找若干字符串中最长的那个  ab,abc,abcd--->abcd
+6.设计一个方法 统计给定字母在字符串中出现的次数   "this is a test of java","a"--->3
+7.设计一个方法 将给定的字符串每一个首字母大写   "this is a test of java"--->"This Is A Test Of Java"
+8.设计一个方法 获取给定字符串中的全部数字   "za1o1zbp24tcq"--->1124
+
+```java
+
+public class TestString {
+    //8.设计一个方法 获取给定字符串中的全部数字   "za1o1zbp24tcq"--->1124
+    //      是否需要参数 String   是否需要返回值int
+    public int findNumber(String str){
+        String result = "";
+        //循环找寻字符串中的每一个 字符
+        //判断当前找到的字符是否是  数字  '0'---'9'   48--57
+        for(int i=0;i<str.length();i++){
+            int code = str.codePointAt(i);//每一个字符对应的code码
+            if(code>=48 && code<=57){
+                result += (char)code;
+            }
+        }
+        //将找到的数字返回
+        return Integer.parseInt(result);//int value = new Integer(result);
+    }
+
+    //7.设计一个方法 将给定的字符串每一个首字母大写
+    //      "this is a test of java"--->"This Is A Test Of Java"
+    //      是否需要参数 String   是否需要返回值String
+    public String firstLetterToUpperCase(String str){
+        String result = "";//最终拼接完整字符串
+        //将完整的字符串按照空格拆分成好多单词  split
+        String[] value = str.split(" ");
+        //循环处理每一个单词  截取首字母-->大写  截取其余的字母   整体拼接
+        //每一次的单词拼接成一个完整的字符串 返回  a.append(b)
+        for(int i=0;i<value.length;i++){
+            String word = value[i];//获取每一个单词
+            String firstLetter = word.substring(0,1).toUpperCase();//首字母截取 变大写
+            String otherLetters = word.substring(1);//其余的其他字母
+            result = result.concat(firstLetter.concat(otherLetters)+" ");//注意String的不可变特性
+        }
+        return result.trim();//去掉最后多余的那个空格
+    }
+
+    //6.设计一个方法 统计给定字母在字符串中出现的次数   "this is a test of java","a"--->3
+    //      是否需要参数 String char   是否需要返回值int
+    public int letterExistCount(String str,char letter){
+        return str.length()-str.replace(String.valueOf(letter),"").length();
+//        int count = 0;//记录找到的个数
+//        for(int i=0;i<str.length();i++){
+//            if(str.charAt(i)==letter){
+//                count++;
+//            }
+//        }
+//        return count;
+    }
+
+    //5.设计一个方法 寻找若干字符串中最长的那个  ab,abc,abcd--->abcd
+    //      是否需要参数 若干个String...  是否需要返回值String
+    public String findMaxLengthString(String...strs){
+        String result = strs[0];//第一个字符串存起来
+        int maxLength = strs[0].length();//第一个字符串的长度
+        for(int i=1;i<strs.length;i++){
+            if(strs[i].length()>maxLength){
+                maxLength = strs[i].length();
+                result = strs[i];
+            }
+        }
+        return result;
+    }
+
+    //4.设计一个方法 将给定的字符串右位移x位置  (helloworld,2) --> ldhellowor
+    //      是否需要参数String,count  是否需要返回值String
+    public String moveToRight(String str,int count){
+        //if(count<0){
+        //自定义异常  告知count不合理
+        // }
+        if(count>str.length()){
+            count %= str.length();
+        }
+        //截取
+        //前半部分
+        String begin = str.substring(0,str.length()-count);//拼接时放在后面
+        //后半部分
+        String end = str.substring(str.length()-count);//拼接时放在前面
+        //拼接以后返回
+        return end.concat(begin);
+    }
+
+    //3.设计一个方法 判断给定字符串是否是回文    abccba   abcba
+    //      是否需要参数String   是否需要返回值 boolean
+    public boolean isPalindrome(String str){
+        //传递进来的str先反转
+        //用str与反转之后的字符串进行比较
+        //如果完全一致 证明是回文
+        if(this.reverse(str).equals(str)){
+            return true;
+        }
+        return false;
+    }
+
+    //2.设计一个方法 将给定字符串的正序和反序进行连接  ok-->okko
+    //      是否需要参数String   是否需要返回值 String
+    public String reverseAndConcat(String str){
+//        //1.将str反转
+//        String value = this.reverse(str);
+//        //2.str之后拼接 反转过来的字串
+//        String result = str.concat(value);
+//        //3.将最终结果返回
+//        return result;
+        return str.concat(this.reverse(str));
+    }
+
+    //1.设计一个方法 将字符串反转   ok-->ko
+    //      是否需要参数 String  是否需要返回值 String
+    public String reverse(String str){//StringBuffer   StringBuilder
+        return new String(new StringBuilder(str).reverse());
+//        //将str变化成数组
+//        char[] value = str.toCharArray();
+//        //数组头尾互换
+//        for(int i=0;i<value.length/2;i++){
+//            char temp = value[i];
+//            value[i] = value[value.length-1-i];
+//            value[value.length-1-i] = temp;
+//        }
+//        //数组组合成字符串  返回
+//        return new String(value);
+    }
+}
+
+public class TestMain {
+    public static void main(String[] args){
+        //创建对象
+        TestString testString = new TestString();
+        //对象调用方法
+//        String result = testString.reverse("一二三");
+//        System.out.println(result);
+
+//        String result = testString.reverseAndConcat("abc");
+//        System.out.println(result);
+
+//        boolean result = testString.isPalindrome("abcdba");
+//        System.out.println(result);
+
+//        String result = testString.moveToRight("helloworld",11);//3>>33
+//        System.out.println(result);
+
+//        String result = testString.findMaxLengthString("abcdefg","abc","abcd","abcde","abcdef");
+//        System.out.println(result);
+
+//        int count = testString.letterExistCount("this is a test of java",'w');
+//        System.out.println(count);
+
+//        String result = testString.firstLetterToUpperCase("this is a test of java");
+//        System.out.println(result);//This Is A Test Of Java
+//        System.out.println(result.length());//22
+
+        int result = testString.findNumber("za1o1zbp24tcq");
+        System.out.println(result);
+    }
+}
+
+```

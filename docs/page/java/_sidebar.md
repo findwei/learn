@@ -12,6 +12,7 @@
   - [数学相关](page/java/toolsClass/数学相关.md)
   - [日期相关](page/java/toolsClass/date.md)
   - [字符串](page/java/toolsClass/string.md)
+  - [StringBuffer与StringBuilder](page/java/toolsClass/StringBuffer与StringBuilder.md)
 - [设计模式](page/java/designPattern/index.md)
     - [单例模式](page/java/designPattern/singleton.md)
     - [适配器模式](page/java/designPattern/adapter.md)
