@@ -1,8 +1,6 @@
 # StringBuffer/StringBuilder
 
 所属的包  java.lang包，继承AbstractStringBuilder 间接继承 Object 
-
-StringBuffer/StringBuilder类不一定需要 ，是为了避免String频繁拼接修改字符串信息的时候才用的，底层数组是可变的  提高了性能
 		
 StringBuffer/StringBuilder 实现接口`Serializable`,`CharSequence`,`Appendable`
 
@@ -18,6 +16,26 @@ StringBuffer/StringBuilder的不同,StringBuffer是早期版本
 | ------------- | ------------------------- | -------------------------------------------- |
 | StringBuffer  | 早期版本1.0（早期版本）   | 线程同步（安全性比较高  执行效率相对较低）   |
 | StringBuilder | 后来的版本1.5（后期版本） | 线程非同步（安全性比较低  执行效率相对较高） |
+
+StringBuffer/StringBuilder类不一定需要 ，是为了避免String频繁拼接修改字符串信息的时候才用的，底层数组是可变的  提高了性能
+```java
+       String str = "a";
+       long time1 = System.currentTimeMillis();
+       for(int i=1;i<=200000;i++){
+           //str+="a";//利用+拼接  10030
+           str = str.concat("a"); //5320
+       }
+       long time2 = System.currentTimeMillis();
+       System.out.println(time2-time1);
+
+       StringBuilder builder = new StringBuilder("a");//17
+       long time1 = System.currentTimeMillis();
+       for(int i=1;i<=200000;i++){
+           builder = builder.append("a");//7毫秒
+       }
+       long time2 = System.currentTimeMillis();
+       System.out.println(time2-time1);
+```
 
 ## 特性
 
@@ -137,7 +155,7 @@ StringBuffer/StringBuilder的不同,StringBuffer是早期版本
             有一个接口Appendable
             可变字符串  没有final修饰  底层可以进行数组扩容
             有一些方法String没有  append() insert() delete() reverse()
-            
+
     7.StringBuffer和StringBuilder的不同
         StringBuffer早期版本1.0
         StringBuilder后来的版本1.5
