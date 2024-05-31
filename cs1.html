@@ -24,6 +24,9 @@
             left: 0;
         }
     </style>
+    <script>
+        console.log(document.getElementById('div1'))
+    </script>
 </head>
 
 <body id="body">
@@ -41,6 +44,37 @@
     <div style="margin-left: 30px; background-color: aquamarine;will-change:transform;">
         <span id="sp">span</span>
     </div>
+
+    <script>
+
+        function _runTask(task, callback) {
+            let startTime = Date.now();
+            requestAnimationFrame(() => {
+                if (Date.now() - startTime < 16.6) {
+                    task();
+                    callback()
+                } else {
+                    _runTask(task, callback)
+                }
+            })
+        }
+        function runTask(task) {
+            return new Promise((resolve, reject) => {
+                _runTask(task, resolve);
+            });
+        }
+        // for (let index = 0; index < 1000; index++) {
+        //     // console.log(index);
+        //     runTask(() => {
+        //         console.log('runTask', index)
+        //     }).then((res) => {
+        //         console.log('then', index)
+        //     }).catch((err) => {
+        //     });
+        // }
+
+    </script>
+    
 </body>
 
 </html>
