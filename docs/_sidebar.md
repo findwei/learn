@@ -6,7 +6,7 @@
     - [typeScript](page/typeScript/index.md)
     - [移动端](page/mobile/index.md)
     - [webpack](page/webpack/index.md)
-    - [vue](page/vue/index.md)
+    - [vue2](page/vue2/index.md)
     - [vue3](page/vue3/index.md)
     - [react](page/react/index.md)
     - [tools](tools/index.md)

@@ -164,9 +164,9 @@ class LoadingSpinner extends HTMLElement {
 
 customElements.define('loading-spinner', LoadingSpinner);
 
-const app = document.getElementById('app')
-if (app) {
-  app.innerHTML = ` <loading-spinner c-title="正在加载...，请耐心等待" c-description="思必驰对话大模型">
-  <!-- <div slot="slot">slot</div> -->
-</loading-spinner>`
-} 
+// const app = document.getElementById('app')
+// if (app) {
+//   app.innerHTML = ` <loading-spinner c-title="正在加载...，请耐心等待" c-description="思必驰对话大模型">
+//   <!-- <div slot="slot">slot</div> -->
+// </loading-spinner>`
+// } 

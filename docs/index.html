@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css" />
 
   <!-- <link rel="stylesheet" href="./style/index.css"> -->
+   <script src="./loadingSpinner.js"></script>
   <style>
     .footer-ba a {
       color: #000;
@@ -47,7 +48,11 @@
 </head>
 
 <body>
-  <div id="app"></div>
+  <div id="app">
+    ` <loading-spinner c-title="正在加载...，请耐心等待" c-description="webber.run">
+      <!-- <div slot="slot">slot</div> -->
+    </loading-spinner>`
+  </div>
   <div id="lock">
     <label for="input">请输入密码</label>
     <input id="input" type="password" />
