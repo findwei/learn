@@ -1,0 +1,185 @@
+{
+  "main": {
+    "id": "62761608a648eafd",
+    "type": "split",
+    "children": [
+      {
+        "id": "497f38e58222aace",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "265b26b07d070872",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "3034ad7b21b9aa23",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "57f2be6660c4c1f1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "preview",
+                "source": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8eba69feb85d90dd",
+    "type": "split",
+    "children": [
+      {
+        "id": "a4a060f7ec7a63a2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1e5aafe2527f8023",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0558c38870782a75",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "6a7967a616888cbe",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d2a96b866eb3494f",
+    "type": "split",
+    "children": [
+      {
+        "id": "57305c43e2187105",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e7cd3317bd13e362",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "a919e0de06dae849",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "README.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "11d40caec1243545",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "f78e625900d5b2c7",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "README.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "57f2be6660c4c1f1",
+  "lastOpenFiles": [
+    "docs/_sidebar.md",
+    "README.md",
+    "未命名.md",
+    "未命名.canvas",
+    "docs/page/java/object.md",
+    "docs/page/typeScript/基本类型约束知识部分.md",
+    "一线大厂核心技术方案大师课配套资料/3. 大文件上传/大文件上传.md",
+    "一线大厂核心技术方案大师课配套资料/3. 大文件上传/大文件上传(1).md",
+    "docs/page/javascript/eventLoop.md",
+    "20240712.jpg",
+    "docs/page/javascript/预编译.md",
+    "docs/page/javascript/跨域写入cookie解决方案.md",
+    "docs/page/javascript/原理-浏览器是如何工作的.md",
+    "docs/knowledge/index.md",
+    "2024-07-22.md"
+  ]
+}
